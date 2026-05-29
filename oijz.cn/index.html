@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="成都亲子飞行攻略站 — 科技育儿与无人机干货。周末带娃攻略、竞赛规则解读、科技特长生升学规划。蜀ICP备2026022939号-5。" />
+    <meta name="author" content="振翔天航" />
+    <title>成都亲子飞行攻略站 · 振翔天航</title>
+    <link rel="icon" type="image/x-icon" href="dist/assets/img/profile.jpg" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --blog-primary: #2563eb;
+            --blog-dark: #1e293b;
+            --blog-muted: #64748b;
+            --blog-bg: #f8fafc;
+            --blog-border: #e2e8f0;
+            --blog-accent: #0ea5e9;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "Noto Sans SC", sans-serif;
+            color: var(--blog-dark);
+            background: #fff;
+        }
+        .serif { font-family: "Source Serif 4", "Noto Serif SC", serif; }
+
+        .top-nav {
+            background: #fff;
+            border-bottom: 1px solid var(--blog-border);
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        }
+        .top-nav .navbar-brand {
+            font-weight: 700;
+            color: var(--blog-dark) !important;
+            font-size: 1.05rem;
+        }
+        .top-nav .nav-link {
+            color: var(--blog-muted) !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .top-nav .nav-link:hover { color: var(--blog-primary) !important; }
+
+        .hero {
+            background: var(--blog-bg);
+            padding: 4rem 0 3.5rem;
+            border-bottom: 1px solid var(--blog-border);
+        }
+        .hero h1 {
+            font-family: "Source Serif 4", serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-weight: 700;
+            color: var(--blog-dark);
+        }
+        .hero-lead { color: var(--blog-muted); max-width: 32rem; line-height: 1.75; }
+
+        .section { padding: 3.5rem 0; }
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--blog-primary);
+            display: inline-block;
+        }
+
+        .article-card {
+            border: 1px solid var(--blog-border);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 100%;
+            transition: box-shadow 0.2s;
+            background: #fff;
+        }
+        .article-card:hover { box-shadow: 0 6px 20px rgba(37, 99, 235, 0.1); }
+        .article-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .article-card-body { padding: 1.35rem 1.5rem; }
+        .article-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.2rem 0.55rem;
+            border-radius: 3px;
+            margin-right: 0.35rem;
+            margin-bottom: 0.5rem;
+        }
+        .tag-tutorial { background: #dbeafe; color: #1d4ed8; }
+        .tag-news { background: #fef3c7; color: #b45309; }
+        .tag-parent { background: #fce7f3; color: #be185d; }
+        .tag-plan { background: #ede9fe; color: #6d28d9; }
+        .tag-guide { background: #d1fae5; color: #047857; }
+        .article-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 0.65rem;
+        }
+        .article-card h3 a {
+            color: var(--blog-dark);
+            text-decoration: none;
+        }
+        .article-card h3 a:hover { color: var(--blog-primary); }
+        .article-excerpt {
+            font-size: 0.88rem;
+            color: var(--blog-muted);
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+        }
+        .read-more {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--blog-primary);
+            text-decoration: none;
+        }
+        .read-more:hover { text-decoration: underline; }
+
+        .sidebar-card {
+            background: var(--blog-bg);
+            border: 1px solid var(--blog-border);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        .sidebar-card h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+            color: var(--blog-dark);
+        }
+        .sidebar-link {
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--blog-border);
+            color: var(--blog-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+        }
+        .sidebar-link:last-child { border-bottom: none; }
+        .sidebar-link:hover { color: var(--blog-primary); }
+        .sidebar-link i { width: 18px; color: var(--blog-accent); margin-right: 0.35rem; }
+
+        .cta-sidebar {
+            background: linear-gradient(135deg, var(--blog-primary), #1d4ed8);
+            color: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .cta-sidebar a {
+            display: inline-block;
+            background: #fff;
+            color: var(--blog-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 0.75rem;
+        }
+
+        .article-full {
+            max-width: 720px;
+        }
+        .article-full h2 {
+            font-family: "Source Serif 4", serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+        }
+        .article-full h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+        }
+        .article-full p, .article-full li {
+            color: #475569;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        .tip-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--blog-primary);
+            padding: 1rem 1.25rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--blog-muted);
+            border-top: 1px solid var(--blog-border);
+            background: var(--blog-bg);
+        }
+        .site-footer a { color: var(--blog-muted); text-decoration: none; }
+        .site-footer a:hover { color: var(--blog-primary); }
+    </style>
+</head>
+<body id="page-top">
+
+<nav class="navbar navbar-expand-lg top-nav sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top"><i class="fas fa-compass me-2" style="color:var(--blog-primary);"></i>成都亲子飞行攻略</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#weekend-guide">周末攻略</a></li>
+                <li class="nav-item"><a class="nav-link" href="#competition">竞赛升学</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tutorials">干货教程</a></li>
+                <li class="nav-item"><a class="nav-link" href="#news">行业资讯</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <p class="small text-uppercase mb-2" style="letter-spacing:0.15em; color:var(--blog-primary); font-weight:600;">振翔天航 · 成都本地攻略</p>
+        <h1 class="mb-3">成都亲子与飞行攻略</h1>
+        <p class="hero-lead mb-0">成都本地「科技育儿」与「无人机干货」内容平台——整理周末带娃去处、白名单赛事规则与科技特长生升学路径，帮家长在信息噪音中做出靠谱选择。</p>
+    </div>
+</header>
+
+<div class="container section">
+    <div class="row g-4">
+        <div class="col-lg-8">
+
+            <section id="weekend-guide">
+                <h2 class="section-title">周末带娃攻略</h2>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <article class="article-card">
+                            <img class="article-card-img" src="dist/assets/img/event/event-crowd.png" alt="下雨天室内遛娃" />
+                            <div class="article-card-body">
+                                <span class="article-tag tag-parent">本地生活</span>
+                                <h3><a href="#article-rainy">成都下雨天带娃去哪玩？这家无人机馆太酷了</a></h3>
+                                <p class="article-excerpt">室内空调、安全防护围栏、教练全程陪同——下雨天不必宅家，天府新区这家无人机馆能让娃玩一下午科技体育。</p>
+                                <a class="read-more" href="#article-rainy">阅读全文 →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="article-card">
+                            <img class="article-card-img" src="dist/assets/img/parents/fpv-experience.png" alt="科技感飞行体验" />
+                            <div class="article-card-body">
+                                <span class="article-tag tag-parent">2026攻略</span>
+                                <h3><a href="#article-weekend2026">2026 成都儿童周末游玩攻略：科技感十足的飞行体验</a></h3>
+                                <p class="article-excerpt">足球无人机、FPV 穿越、3D 打印半日营——三大体验一站汇总，附预约方式与适合年龄参考，帮家长快速做决定。</p>
+                                <a class="read-more" href="#article-weekend2026">阅读全文 →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="article-card">
+                            <img class="article-card-img" src="dist/assets/img/parents/drone-soccer.png" alt="无人机足球亲子对抗" />
+                            <div class="article-card-body">
+                                <span class="article-tag tag-parent">亲子</span>
+                                <h3><a href="https://ofvo.cn#weekend" target="_blank" rel="noopener">周末不知道带娃干啥？试试空中足球亲子对抗</a></h3>
+                                <p class="article-excerpt">像踢球一样好玩的无人机足球，零门槛上手。家庭 3v3 对抗赛、生日派对包场，适合 6–16 岁孩子周末打卡。</p>
+                                <a class="read-more" href="https://ofvo.cn#weekend" target="_blank" rel="noopener">预约足球体验 →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="article-card">
+                            <img class="article-card-img" src="dist/assets/img/parents/maker-space.png" alt="3D打印亲子手工" />
+                            <div class="article-card-body">
+                                <span class="article-tag tag-parent">打卡</span>
+                                <h3><a href="https://upzn.cn#experience" target="_blank" rel="noopener">带娃做手工：3D 打印一个自己的无人机零件</a></h3>
+                                <p class="article-excerpt">小小建模师半日营，孩子亲手设计保护罩或挂件，打印完成带回家。工业风创客空间，下雨天遛娃好去处。</p>
+                                <a class="read-more" href="https://upzn.cn#experience" target="_blank" rel="noopener">预约创客体验 →</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="competition">
+                <h2 class="section-title">竞赛与升学规划</h2>
+                <div class="row g-4 mb-5">
+                    <div class="col-12">
+                        <article class="article-card">
+                            <img class="article-card-img" src="dist/assets/img/parents/racing-gates.png" alt="2026无人机大赛" style="height:200px;" />
+                            <div class="article-card-body">
+                                <span class="article-tag tag-plan">白名单</span>
+                                <span class="article-tag tag-plan">2026</span>
+                                <h3><a href="#article-rules2026">2026 年全国青少年无人机大赛规则解读</a></h3>
+                                <p class="article-excerpt">飞北赛取消无人机项目、空中对抗赛新增锁头模式、越障竞速规则调整……2026 年赛事体系变化大，家长备赛前务必读懂新规，避免按过时信息规划。</p>
+                                <a class="read-more" href="#article-rules2026">阅读解读 →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12">
+                        <article class="article-card">
+                            <img class="article-card-img" src="dist/assets/img/event/event-practice.png" alt="科技特长生规划" style="height:200px;" />
+                            <div class="article-card-body">
+                                <span class="article-tag tag-plan">升学</span>
+                                <h3><a href="#article-tech-student">孩子想走科技特长生？FPV 竞速是个好方向</a></h3>
+                                <p class="article-excerpt">科技特长生并非「考个证就行」，需要真实赛场成绩与系统性训练支撑。FPV 竞速与越障项目在白名单赛事中持续活跃，适合有明确竞赛目标的家庭深度规划。</p>
+                                <a class="read-more" href="#article-tech-student">阅读规划指南 →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12">
+                        <article class="article-card">
+                            <div class="article-card-body">
+                                <span class="article-tag tag-plan">足球赛</span>
+                                <h3>无人机足球校队怎么组建？从体验到市赛的路径</h3>
+                                <p class="article-excerpt">周末体验 → 启蒙班 → 校队选拔 → 区级市赛 → 省赛国赛。团队竞技培养协作与战术思维，2026 年归入空中对抗赛子任务，规则详解见足球专项站。</p>
+                                <a class="read-more" href="https://ofvo.cn#courses" target="_blank" rel="noopener">了解青训体系 →</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tutorials">
+                <h2 class="section-title">干货教程</h2>
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <article class="article-card">
+                            <div class="article-card-body">
+                                <span class="article-tag tag-tutorial">维修</span>
+                                <h3><a href="#article-fpv">FPV 炸机了怎么修？新手自救指南</a></h3>
+                                <p class="article-excerpt">桨叶断了换桨、机架裂了 AB 胶急救、电机不转先查焊点——最常见炸机场景的排查顺序与工具清单。</p>
+                                <a class="read-more" href="#article-fpv">阅读全文 →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="article-card">
+                            <div class="article-card-body">
+                                <span class="article-tag tag-guide">科普</span>
+                                <h3><a href="https://ofvo.cn" target="_blank" rel="noopener">无人机足球是什么？3 分钟入门</a></h3>
+                                <p class="article-excerpt">球形无人机 + 团队对抗 + 球门得分。本文只做科普入门；规则详解、备赛要点请前往足球专项站查看。</p>
+                                <a class="read-more" href="https://ofvo.cn" target="_blank" rel="noopener">前往足球专项站 →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="article-card">
+                            <div class="article-card-body">
+                                <span class="article-tag tag-guide">本地</span>
+                                <h3>成都哪里可以合法飞无人机？</h3>
+                                <p class="article-excerpt">天府新区、双流部分开阔地带需注意禁飞区；室内训练可规避空域限制。俱乐部封闭式围栏内训练是新手最安全的选择。</p>
+                                <a class="read-more" href="#article-fly">阅读全文 →</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="article-card">
+                            <div class="article-card-body">
+                                <span class="article-tag tag-tutorial">硬件</span>
+                                <h3><a href="https://upzn.cn" target="_blank" rel="noopener">想自己打印桨叶保护罩？先了解这些</a></h3>
+                                <p class="article-excerpt">材料选 TPU 还是 PETG？壁厚多少才耐撞？简要科普后，建议去 3D 打印工坊参加实操课。</p>
+                                <a class="read-more" href="https://upzn.cn" target="_blank" rel="noopener">前往创客工坊 →</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="news">
+                <h2 class="section-title">行业资讯</h2>
+                <div class="row g-4 mb-5">
+                    <div class="col-12">
+                        <article class="article-card">
+                            <div class="article-card-body">
+                                <span class="article-tag tag-news">政策</span>
+                                <span class="article-tag tag-news">2026</span>
+                                <h3>低空经济政策持续加码，青少年无人机教育迎来新机遇</h3>
+                                <p class="article-excerpt">国家层面多次提及低空经济与无人机产业人才培养。教育部白名单赛事体系也在调整优化——2026 年飞北赛取消无人机项目，全国青少年无人机创新教育竞赛等新平台陆续设立。家长规划时需关注政策变化，避免按过时信息备赛。</p>
+                                <p class="article-excerpt mb-2">竞速与穿越机方向 → <a href="https://axmz.cn" target="_blank" rel="noopener">axmz.cn</a> · 足球团队赛 → <a href="https://ofvo.cn" target="_blank" rel="noopener">ofvo.cn</a></p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12">
+                        <article class="article-card">
+                            <div class="article-card-body">
+                                <span class="article-tag tag-news">考证</span>
+                                <h3>民航局无人机驾驶员执照：谁需要考？怎么考？</h3>
+                                <p class="article-excerpt">娱乐飞行不强制持证，但商业航拍、农林植保、电力巡检等从业方向必须持有相应执照。理论考试 + 实操考核，培训周期因机型而异。有志成为职业飞手的年轻人，建议走系统化培训路径而非自学裸考。</p>
+                                <a class="read-more" href="https://axmz.cn#training" target="_blank" rel="noopener">了解考证班 →</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="article-rainy" class="article-full">
+                <h2 class="section-title">成都下雨天带娃去哪玩？这家无人机馆太酷了</h2>
+                <p class="text-muted small mb-4">发布日期：2026-01 · 阅读约 4 分钟 · 标签：本地生活 / 周末遛娃</p>
+                <p>成都冬天阴雨多，周末一旦下雨，很多家长就开始发愁：商场人挤人，电影院娃坐不住，户外又淋雨。其实天府新区有一家藏在商场里的无人机科技馆，室内恒温、安全防护到位，能让孩子在「玩」中接触前沿科技。</p>
+                <h3>为什么下雨天特别适合来？</h3>
+                <ul>
+                    <li><strong>全室内</strong>：天府招商花园城 L3，地铁 6 号线秦皇寺站直达，不用淋雨</li>
+                    <li><strong>安全围栏</strong>：封闭式飞行场地，教练全程监护，比户外野飞放心百倍</li>
+                    <li><strong>三大项目</strong>：足球无人机对抗、FPV 穿越体验、3D 打印手工，可按孩子兴趣选择</li>
+                </ul>
+                <div class="tip-box">
+                    想直接预约体验？足球体验 → <a href="https://ofvo.cn#weekend" target="_blank" rel="noopener">ofvo.cn</a> · FPV 飞行 → <a href="https://axmz.cn#weekend" target="_blank" rel="noopener">axmz.cn</a> · 3D 手工 → <a href="https://upzn.cn#experience" target="_blank" rel="noopener">upzn.cn</a>
+                </div>
+            </section>
+
+            <section id="article-weekend2026" class="article-full mt-5">
+                <h2 class="section-title">2026 成都儿童周末游玩攻略：科技感十足的飞行体验</h2>
+                <p class="text-muted small mb-4">发布日期：2026-01 · 阅读约 6 分钟 · 标签：攻略汇总</p>
+                <p>振翔天航成都基地提供三大周末体验项目，适合不同性格的孩子：</p>
+                <h3>① 无人机足球（6–16 岁，亲子首选）</h3>
+                <p>团队对抗、像踢球一样好玩。周末单次体验课 90 分钟，也可预约家庭对抗赛或生日派对包场。<a href="https://ofvo.cn#weekend" target="_blank" rel="noopener">预约入口 →</a></p>
+                <h3>② FPV 穿越机（10 岁以上，追求刺激）</h3>
+                <p>第一视角飞行沉浸感强，可先玩模拟器挑战赛再上手实飞。适合 10 岁以上喜欢速度感的青少年。<a href="https://axmz.cn#weekend" target="_blank" rel="noopener">预约入口 →</a></p>
+                <h3>③ 3D 打印半日营（6 岁以上，动手派）</h3>
+                <p>设计并打印自己的无人机零件或卡通挂件，工业风创客空间适合下雨天遛娃。<a href="https://upzn.cn#experience" target="_blank" rel="noopener">预约入口 →</a></p>
+                <div class="tip-box">不确定选哪个？先打 <a href="tel:15928633886">159 2863 3886</a> 咨询，或访问 <a href="https://poqn.cn#weekend" target="_blank" rel="noopener">官方主站周末导览</a> 一键对比。基地开放时间：周二至周日 10:00–19:00（周一休息），可电话/微信咨询，也欢迎实地考察。</div>
+            </section>
+
+            <section id="article-rules2026" class="article-full mt-5">
+                <h2 class="section-title">2026 年全国青少年无人机大赛规则解读</h2>
+                <p class="text-muted small mb-4">发布日期：2026-01 · 阅读约 8 分钟 · 标签：竞赛 / 白名单</p>
+                <p>2026 年第十届全国青少年无人机大赛已进入筹备阶段，赛事体系有多处重要调整，家长备赛前务必了解：</p>
+                <h3>足球项目：归入空中对抗赛</h3>
+                <p>无人机足球不再作为独立「魁地奇」赛事，而归入空中对抗赛四大子任务之一。新增锁头模式、设备改装合规要求等，完整规则见 <a href="https://ofvo.cn#rules" target="_blank" rel="noopener">足球专项站</a>。</p>
+                <h3>竞速项目：越障赛道持续活跃</h3>
+                <p>第三视角越障与 FPV 竞速仍是白名单赛事核心方向。飞北赛取消无人机项目后，全国青少年无人机大赛成为主要备赛平台。<a href="https://axmz.cn#training" target="_blank" rel="noopener">了解特训营 →</a></p>
+                <h3>备赛建议</h3>
+                <p>不要按 2025 年过时信息规划。建议先周末体验确认孩子兴趣，再进入系统集训。公司资质可至 <a href="https://poqn.cn#honors" target="_blank" rel="noopener">官方主站</a> 查验。</p>
+            </section>
+
+            <section id="article-tech-student" class="article-full mt-5">
+                <h2 class="section-title">孩子想走科技特长生？FPV 竞速是个好方向</h2>
+                <p class="text-muted small mb-4">发布日期：2026-01 · 阅读约 6 分钟 · 标签：升学规划</p>
+                <p>「科技特长生」近年受到家长关注，但需要清醒认识：这不是报个班就能拿到的标签，而是需要真实竞赛成绩、系统性训练与持续投入的方向。</p>
+                <h3>为什么推荐 FPV / 越障竞速？</h3>
+                <ul>
+                    <li>白名单赛事体系中竞速类项目持续活跃，升学认可度较高</li>
+                    <li>从模拟器到实飞，训练路径清晰，可量化进步</li>
+                    <li>可衔接 CAAC/AOPA 执照，拓展职业飞手方向</li>
+                </ul>
+                <h3>规划路径建议</h3>
+                <p>周末体验（axmz.cn）→ 系统培训 → 区级市赛 → 省赛国赛 → 结合目标学校政策申请。竞赛教练咨询：<a href="tel:15800802787">158 0080 2787</a>（王先生）。</p>
+            </section>
+
+            <section id="article-fpv" class="article-full mt-5">
+                <h2 class="section-title">精选文章：FPV 炸机了怎么修？</h2>
+                <p class="text-muted small mb-4">发布日期：2026-03 · 阅读约 5 分钟</p>
+
+                <p>穿越机炸机是必修课。据统计，新手在模拟器投入不足 50 小时就上手实飞，炸机概率超过 80%。别慌——大多数「炸」不等于报废，按下面顺序排查，能救一台是一台。</p>
+
+                <h3>第一步：断电，现场安全</h3>
+                <p>坠机后第一件事是断开电池。如有冒烟或异味，远离机身等待冷却，切勿徒手拔电池。确认桨叶停转后再靠近检查。</p>
+
+                <h3>第二步：外观快检</h3>
+                <ul>
+                    <li><strong>桨叶</strong>：裂纹、缺口必须更换，别省这几块钱</li>
+                    <li><strong>机架</strong>：碳纤维裂纹可用 AB 胶应急，严重变形建议更换臂管</li>
+                    <li><strong>保护圈/涵道</strong>：轻微形变可掰回，断裂则更换</li>
+                </ul>
+
+                <h3>第三步：动力系统</h3>
+                <p>电机不转？先用手拨桨叶感受阻力是否均匀。某一颗阻力明显偏大，可能是轴承损坏或轴弯。检查电机线与电调焊点有无虚焊脱落。</p>
+
+                <h3>第四步：图传与接收机</h3>
+                <p>天线是易损件，撞断后图传距离急剧下降。接收机天线同样脆弱，备一根备用很有必要。</p>
+
+                <div class="tip-box">
+                    <strong>想系统学维修？</strong> 报名 <a href="https://axmz.cn" target="_blank" rel="noopener">天航 FPV 竞速飞行中心</a> 的体验课，教练会带你拆解一架训练机，比看十篇教程更有效。需要打印替换件？去 <a href="https://upzn.cn" target="_blank" rel="noopener">天航 3D 创客工坊</a> 打样。
+                </div>
+            </section>
+
+            <section id="article-fly" class="article-full mt-5">
+                <h2 class="section-title">成都哪里可以合法飞无人机？</h2>
+                <p class="text-muted small mb-4">发布日期：2026-02 · 阅读约 4 分钟</p>
+
+                <p>成都有多个机场净空保护区、军事管理区及人口密集区域属于禁飞或限飞范围。飞前务必打开官方 APP（如「无人机空域查询」类工具）确认当前位置是否在禁飞区内。</p>
+
+                <h3>新手推荐：室内 / 封闭场地</h3>
+                <p>对于学习阶段的青少年，最稳妥的选择是俱乐部内的安全防护围栏场地——不占用公共空域、不受天气影响、有教练监护。振翔天航成都基地即采用此模式。</p>
+
+                <h3>户外飞行注意事项</h3>
+                <ul>
+                    <li>避开机场周边、政府机关、大型活动上空</li>
+                    <li>飞行高度不超过 120 米（法规要求）</li>
+                    <li>实名登记、购买责任险（建议）</li>
+                    <li>不在夜间、大雾、大风天气强行飞行</li>
+                </ul>
+
+                <div class="tip-box">
+                    想了解更多合规细节与公司资质？访问 <a href="https://poqn.cn" target="_blank" rel="noopener">振翔天航官方品牌主站</a>。
+                </div>
+            </section>
+
+        </div>
+
+        <div class="col-lg-4">
+            <div class="sidebar-card">
+                <h4><i class="fas fa-sitemap me-1"></i> 五站矩阵导航</h4>
+                <a class="sidebar-link" href="https://poqn.cn" target="_blank" rel="noopener"><i class="fas fa-landmark"></i>poqn.cn · 官方主站</a>
+                <a class="sidebar-link" href="https://ofvo.cn#weekend" target="_blank" rel="noopener"><i class="fas fa-futbol"></i>ofvo.cn · 足球体验营</a>
+                <a class="sidebar-link" href="https://axmz.cn#weekend" target="_blank" rel="noopener"><i class="fas fa-bolt"></i>axmz.cn · FPV 竞速中心</a>
+                <a class="sidebar-link" href="https://upzn.cn#experience" target="_blank" rel="noopener"><i class="fas fa-cube"></i>upzn.cn · 3D 创客工坊</a>
+                <a class="sidebar-link" href="#page-top"><i class="fas fa-newspaper"></i>oijz.cn · 亲子攻略站</a>
+            </div>
+
+            <div class="cta-sidebar mb-4">
+                <h4 class="h6 mb-2" style="color:#fff;">周末不知道带娃去哪？</h4>
+                <p class="small mb-0 opacity-90">一键咨询：易先生 159 2863 3886<br>竞赛规划：王先生 158 0080 2787</p>
+                <a href="tel:15928633886">立即致电</a>
+            </div>
+
+            <div class="sidebar-card">
+                <h4><i class="fas fa-rss me-1"></i> 热门话题</h4>
+                <a class="sidebar-link" href="#article-rainy">下雨天遛娃攻略</a>
+                <a class="sidebar-link" href="#article-weekend2026">2026 周末游玩汇总</a>
+                <a class="sidebar-link" href="#article-rules2026">2026 大赛规则解读</a>
+                <a class="sidebar-link" href="#article-tech-student">科技特长生规划</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section" id="contact" style="background:var(--blog-bg); padding:2.5rem 0;">
+    <div class="container text-center">
+        <p class="text-muted small mb-1">本站由成都振翔天航科技有限公司运营 · 内容投稿 / 商务合作</p>
+        <p class="mb-0">
+            <a href="tel:15928633886">159 2863 3886</a> ·
+            <a href="mailto:531103135@qq.com">531103135@qq.com</a> ·
+            成都天府新区天府招商花园城 L3-027
+        </p>
+        <p class="text-muted small mt-2 mb-0"><i class="fas fa-clock me-1"></i>基地开放时间：周二至周日 10:00–19:00（周一休息）· 可电话/微信咨询，也欢迎实地考察</p>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <p class="mb-0"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">蜀ICP备2026022939号-5</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
