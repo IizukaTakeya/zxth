@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="振翔天航官方品牌主站 — 周末活动导览、民航局授权资质、教育局合作、金牌教练团队、赛事承办案例与学员荣誉。蜀ICP备2026022939号-1。" />
+        <meta name="author" content="振翔天航" />
+        <title>振翔天航 · 官方品牌主站</title>
+        <link rel="icon" type="image/x-icon" href="dist/assets/img/profile.jpg" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            :root {
+                --brand-navy: #0c2540;
+                --brand-navy-mid: #163a5c;
+                --brand-gold: #c9a227;
+                --brand-gold-light: #e8d48a;
+                --brand-bg: #f6f8fa;
+                --brand-border: #d8e0e8;
+                --brand-text: #2a3542;
+            }
+            html { scroll-behavior: smooth; }
+            body {
+                font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+                color: var(--brand-text);
+                background: #fff;
+            }
+            h1, h2, h3, .brand-serif {
+                font-family: "Noto Serif SC", "Noto Sans SC", serif;
+            }
+
+            /* ── 顶栏导航 ── */
+            .top-nav {
+                background: rgba(12, 37, 64, 0.97);
+                backdrop-filter: blur(8px);
+                border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+            }
+            .top-nav .navbar-brand {
+                font-family: "Noto Serif SC", serif;
+                font-weight: 700;
+                color: #fff !important;
+                font-size: 1.15rem;
+                letter-spacing: 0.06em;
+            }
+            .top-nav .navbar-brand span {
+                color: var(--brand-gold);
+                font-size: 0.72rem;
+                display: block;
+                letter-spacing: 0.18em;
+                font-family: "Noto Sans SC", sans-serif;
+                font-weight: 500;
+                margin-top: 2px;
+            }
+            .top-nav .nav-link {
+                color: rgba(255, 255, 255, 0.82) !important;
+                font-weight: 500;
+                font-size: 0.92rem;
+                padding: 0.5rem 1rem !important;
+                transition: color 0.2s;
+            }
+            .top-nav .nav-link:hover { color: var(--brand-gold-light) !important; }
+            .top-nav .navbar-toggler { border-color: rgba(255,255,255,0.3); }
+            .top-nav .navbar-toggler-icon {
+                filter: invert(1);
+            }
+
+            /* ── 首屏 Hero ── */
+            .hero {
+                background: linear-gradient(145deg, var(--brand-navy) 0%, var(--brand-navy-mid) 55%, #1e4a6e 100%);
+                color: #fff;
+                padding: 7rem 0 5.5rem;
+                position: relative;
+                overflow: hidden;
+            }
+            .hero::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background:
+                    radial-gradient(ellipse at 80% 20%, rgba(201, 162, 39, 0.12) 0%, transparent 55%),
+                    radial-gradient(ellipse at 10% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+                pointer-events: none;
+            }
+            .hero-badge {
+                display: inline-block;
+                border: 1px solid rgba(201, 162, 39, 0.5);
+                color: var(--brand-gold-light);
+                padding: 0.3rem 1rem;
+                font-size: 0.78rem;
+                letter-spacing: 0.2em;
+                margin-bottom: 1.25rem;
+            }
+            .hero h1 {
+                font-size: clamp(2rem, 5.5vw, 3.2rem);
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                margin-bottom: 1rem;
+            }
+            .hero .lead {
+                font-size: 1.1rem;
+                opacity: 0.88;
+                max-width: 38rem;
+                line-height: 1.75;
+            }
+            .hero-stats {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                margin-top: 2.5rem;
+                padding-top: 2rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
+            }
+            .hero-stat .num {
+                font-family: "Noto Serif SC", serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--brand-gold);
+                line-height: 1;
+            }
+            .hero-stat .lbl {
+                font-size: 0.82rem;
+                opacity: 0.7;
+                margin-top: 0.3rem;
+            }
+
+            /* ── 通用区块 ── */
+            .section-wrap {
+                padding: 4.5rem 0;
+            }
+            .section-wrap.alt-bg { background: var(--brand-bg); }
+            .section-label {
+                font-size: 0.75rem;
+                letter-spacing: 0.22em;
+                color: var(--brand-gold);
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+            }
+            .section-title {
+                font-size: clamp(1.5rem, 3vw, 2rem);
+                font-weight: 700;
+                color: var(--brand-navy);
+                margin-bottom: 0.75rem;
+            }
+            .section-desc {
+                color: #5a6570;
+                max-width: 36rem;
+                margin-bottom: 2.5rem;
+                line-height: 1.75;
+            }
+            .gold-line {
+                width: 48px;
+                height: 3px;
+                background: var(--brand-gold);
+                margin-bottom: 1.25rem;
+            }
+
+            /* ── 关于我们：时间轴 ── */
+            .timeline { position: relative; padding-left: 2rem; }
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 6px;
+                top: 8px;
+                bottom: 8px;
+                width: 2px;
+                background: linear-gradient(to bottom, var(--brand-gold), var(--brand-border));
+            }
+            .timeline-item {
+                position: relative;
+                margin-bottom: 2rem;
+                padding-left: 1.5rem;
+            }
+            .timeline-item:last-child { margin-bottom: 0; }
+            .timeline-item::before {
+                content: "";
+                position: absolute;
+                left: -2rem;
+                top: 6px;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: var(--brand-gold);
+                border: 3px solid #fff;
+                box-shadow: 0 0 0 2px var(--brand-gold);
+            }
+            .timeline-year {
+                font-family: "Noto Serif SC", serif;
+                font-weight: 700;
+                color: var(--brand-navy);
+                font-size: 1.05rem;
+                margin-bottom: 0.35rem;
+            }
+
+            /* ── 文化价值观 ── */
+            .value-card {
+                background: #fff;
+                border: 1px solid var(--brand-border);
+                border-radius: 8px;
+                padding: 1.75rem;
+                height: 100%;
+                transition: box-shadow 0.25s, border-color 0.25s;
+            }
+            .value-card:hover {
+                border-color: var(--brand-gold);
+                box-shadow: 0 8px 28px rgba(12, 37, 64, 0.08);
+            }
+            .value-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 8px;
+                background: rgba(12, 37, 64, 0.08);
+                color: var(--brand-navy);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            .value-card h4 {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--brand-navy);
+                margin-bottom: 0.5rem;
+            }
+
+            /* ── 基地实景 ── */
+            .gallery-img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(12, 37, 64, 0.1);
+                display: block;
+            }
+            .gallery-caption {
+                font-size: 0.82rem;
+                color: #6c757d;
+                margin-top: 0.5rem;
+                text-align: center;
+            }
+
+            /* ── 资质荣誉 ── */
+            .honor-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.25rem;
+            }
+            .honor-item {
+                background: #fff;
+                border: 1px solid var(--brand-border);
+                border-radius: 8px;
+                padding: 1.5rem 1.25rem;
+                text-align: center;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .honor-item:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 24px rgba(12, 37, 64, 0.1);
+            }
+            .honor-icon {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-mid) 100%);
+                color: var(--brand-gold);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.4rem;
+                margin: 0 auto 1rem;
+            }
+            .honor-item h4 {
+                font-size: 0.92rem;
+                font-weight: 600;
+                color: var(--brand-navy);
+                margin-bottom: 0.4rem;
+            }
+            .honor-item p {
+                font-size: 0.8rem;
+                color: #6c757d;
+                margin: 0;
+                line-height: 1.5;
+            }
+            .trust-banner {
+                background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-mid) 100%);
+                color: #fff;
+                border-radius: 10px;
+                padding: 2rem 2.5rem;
+                margin-top: 2.5rem;
+            }
+            .trust-banner p { margin: 0; opacity: 0.9; line-height: 1.75; }
+
+            /* ── 综合新闻 ── */
+            .news-card {
+                background: #fff;
+                border: 1px solid var(--brand-border);
+                border-radius: 8px;
+                overflow: hidden;
+                height: 100%;
+                transition: box-shadow 0.25s;
+            }
+            .news-card:hover { box-shadow: 0 8px 28px rgba(12, 37, 64, 0.1); }
+            .news-card img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+            .news-card-body { padding: 1.5rem; }
+            .news-date {
+                font-size: 0.78rem;
+                color: var(--brand-gold);
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                margin-bottom: 0.5rem;
+            }
+            .news-card h4 {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--brand-navy);
+                margin-bottom: 0.65rem;
+                line-height: 1.5;
+            }
+            .news-tag {
+                display: inline-block;
+                background: rgba(12, 37, 64, 0.07);
+                color: var(--brand-navy);
+                font-size: 0.72rem;
+                padding: 0.2rem 0.6rem;
+                border-radius: 3px;
+                margin-right: 0.35rem;
+            }
+
+            /* ── 旗下品牌 ── */
+            .brand-link {
+                display: flex;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1.25rem 1.5rem;
+                background: #fff;
+                border: 1px solid var(--brand-border);
+                border-radius: 8px;
+                color: var(--brand-text);
+                text-decoration: none;
+                height: 100%;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+            .brand-link:hover {
+                border-color: var(--brand-gold);
+                box-shadow: 0 6px 20px rgba(12, 37, 64, 0.08);
+                color: var(--brand-navy);
+            }
+            .brand-link-icon {
+                flex-shrink: 0;
+                width: 44px;
+                height: 44px;
+                border-radius: 8px;
+                background: rgba(12, 37, 64, 0.08);
+                color: var(--brand-navy);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+            }
+            .brand-link strong { display: block; margin-bottom: 0.25rem; }
+            .brand-link .domain { font-size: 0.8rem; color: #6c757d; }
+
+            /* ── 联系报名 ── */
+            .contact-panel {
+                background: linear-gradient(160deg, var(--brand-navy) 0%, #1a4060 100%);
+                color: #fff;
+                border-radius: 12px;
+                padding: 2.5rem;
+            }
+            .contact-panel a { color: var(--brand-gold-light); }
+            .contact-panel a:hover { color: #fff; }
+            .contact-item {
+                display: flex;
+                gap: 1rem;
+                margin-bottom: 1.25rem;
+            }
+            .contact-item:last-child { margin-bottom: 0; }
+            .contact-item i {
+                color: var(--brand-gold);
+                width: 20px;
+                margin-top: 3px;
+            }
+            .wechat-qrcode {
+                display: block;
+                max-width: 160px;
+                border-radius: 8px;
+                margin-top: 0.5rem;
+            }
+            .cta-btn {
+                display: inline-block;
+                background: var(--brand-gold);
+                color: var(--brand-navy);
+                font-weight: 600;
+                padding: 0.65rem 1.75rem;
+                border-radius: 4px;
+                text-decoration: none;
+                transition: background 0.2s;
+                margin-top: 1rem;
+            }
+            .cta-btn:hover {
+                background: var(--brand-gold-light);
+                color: var(--brand-navy);
+            }
+
+            /* ── 页脚 ── */
+            .site-footer {
+                background: var(--brand-navy);
+                color: rgba(255, 255, 255, 0.65);
+                padding: 2.5rem 0 1.5rem;
+                font-size: 0.88rem;
+            }
+            .site-footer a { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+            .site-footer a:hover { color: var(--brand-gold-light); }
+            .footer-brand {
+                font-family: "Noto Serif SC", serif;
+                font-size: 1.1rem;
+                color: #fff;
+                letter-spacing: 0.06em;
+                margin-bottom: 0.5rem;
+            }
+            .footer-entity {
+                font-size: 0.8rem;
+                opacity: 0.6;
+            }
+
+            /* ── 周末导览 ── */
+            .weekend-card {
+                display: block;
+                background: #fff;
+                border: 1px solid var(--brand-border);
+                border-radius: 10px;
+                overflow: hidden;
+                color: var(--brand-text);
+                text-decoration: none;
+                height: 100%;
+                transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            }
+            .weekend-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--brand-gold);
+                box-shadow: 0 12px 32px rgba(12, 37, 64, 0.12);
+                color: var(--brand-navy);
+            }
+            .weekend-card-img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            }
+            .weekend-card-body { padding: 1.25rem 1.35rem; }
+            .weekend-card-tag {
+                display: inline-block;
+                background: rgba(201, 162, 39, 0.15);
+                color: #8a6d12;
+                font-size: 0.72rem;
+                font-weight: 600;
+                padding: 0.2rem 0.55rem;
+                border-radius: 3px;
+                margin-bottom: 0.5rem;
+            }
+            .weekend-card h4 {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--brand-navy);
+                margin-bottom: 0.4rem;
+            }
+            .weekend-card p {
+                font-size: 0.82rem;
+                color: #6c757d;
+                margin: 0;
+                line-height: 1.55;
+            }
+            .weekend-cta {
+                display: inline-block;
+                margin-top: 0.65rem;
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: var(--brand-gold);
+            }
+
+            /* ── 教练团队 ── */
+            .coach-card {
+                background: #fff;
+                border: 1px solid var(--brand-border);
+                border-radius: 8px;
+                padding: 1.5rem;
+                height: 100%;
+                text-align: center;
+            }
+            .coach-avatar {
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--brand-navy), var(--brand-navy-mid));
+                color: var(--brand-gold);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.75rem;
+                margin: 0 auto 1rem;
+            }
+            .coach-card h4 {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--brand-navy);
+                margin-bottom: 0.25rem;
+            }
+            .coach-role {
+                font-size: 0.78rem;
+                color: var(--brand-gold);
+                font-weight: 600;
+                margin-bottom: 0.65rem;
+            }
+
+            /* ── 赛事承办 / 学员荣誉 ── */
+            .case-card {
+                background: #fff;
+                border: 1px solid var(--brand-border);
+                border-radius: 8px;
+                padding: 1.5rem 1.75rem;
+                height: 100%;
+                border-left: 4px solid var(--brand-gold);
+            }
+            .case-card .case-year {
+                font-size: 0.78rem;
+                color: var(--brand-gold);
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                margin-bottom: 0.5rem;
+            }
+            .case-card h4 {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--brand-navy);
+                margin-bottom: 0.5rem;
+            }
+            .award-item {
+                display: flex;
+                gap: 1rem;
+                align-items: flex-start;
+                padding: 1.25rem;
+                background: #fff;
+                border: 1px solid var(--brand-border);
+                border-radius: 8px;
+                height: 100%;
+            }
+            .award-medal {
+                flex-shrink: 0;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-light));
+                color: var(--brand-navy);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+            }
+            .award-item h4 {
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: var(--brand-navy);
+                margin-bottom: 0.35rem;
+            }
+        </style>
+    </head>
+    <body id="page-top">
+
+        <nav class="navbar navbar-expand-lg top-nav sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">
+                    振翔天航
+                    <span>OFFICIAL BRAND</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="展开菜单">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#weekend">周末去哪儿</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">关于我们</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#honors">资质荣誉</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#events-case">赛事承办</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#student-honors">学员荣誉</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#coaches">教练团队</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#news">综合新闻</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#brands">旗下品牌</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">联系报名</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header class="hero">
+            <div class="container position-relative">
+                <span class="hero-badge">振翔天航 · 官方品牌主站</span>
+                <h1 class="brand-serif">权威引领 · 筑梦蓝天</h1>
+                <p class="lead">
+                    成都振翔天航科技有限公司官方品牌门户。专注青少年无人机科技体育教育，拥有民航局授权培训资质、教育局合作资源、持证教练团队与真实赛场成绩，为家长提供可信赖的品牌信息与统一咨询入口。
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="num">民航</div>
+                        <div class="lbl">体系化培训资质</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num">成都</div>
+                        <div class="lbl">天府新区教学基地</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num">退役</div>
+                        <div class="lbl">军人团队创办</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num">白名单</div>
+                        <div class="lbl">赛事体系深度参与</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 周末去哪儿玩 -->
+        <section class="section-wrap alt-bg" id="weekend">
+            <div class="container">
+                <p class="section-label">WEEKEND FUN</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">周末去哪儿玩？</h2>
+                <p class="section-desc">
+                    三大体验站覆盖足球、竞速与创客不同方向——家长可一键跳转预约周末活动，找到最适合孩子的科技体育项目。各体验站开放时间：<strong>周二至周日 10:00–19:00</strong>（周一休息），可电话/微信咨询，也欢迎实地考察。
+                </p>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <a class="weekend-card" href="https://ofvo.cn" target="_blank" rel="noopener">
+                            <img class="weekend-card-img" src="dist/assets/img/parents/drone-soccer.png" alt="无人机足球周末体验" />
+                            <div class="weekend-card-body">
+                                <span class="weekend-card-tag">亲子互动 · 团队竞技</span>
+                                <h4>无人机足球体验营</h4>
+                                <p>像踢球一样好玩的空中对抗，零门槛上手。周末单次体验课、家庭对抗赛、生日派对包场，室内空调安全场地。</p>
+                                <span class="weekend-cta">预约体验 → ofvo.cn</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="weekend-card" href="https://axmz.cn" target="_blank" rel="noopener">
+                            <img class="weekend-card-img" src="dist/assets/img/parents/fpv-experience.png" alt="FPV穿越机周末体验" />
+                            <div class="weekend-card-body">
+                                <span class="weekend-card-tag">速度刺激 · 沉浸视角</span>
+                                <h4>FPV 竞速初体验</h4>
+                                <p>第一视角飞行沉浸感强。模拟器挑战赛、穿越机初体验，适合 10 岁以上零基础学员周末入门。</p>
+                                <span class="weekend-cta">预约飞行 → axmz.cn</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="weekend-card" href="https://upzn.cn" target="_blank" rel="noopener">
+                            <img class="weekend-card-img" src="dist/assets/img/parents/maker-space.png" alt="3D打印创客周末体验" />
+                            <div class="weekend-card-body">
+                                <span class="weekend-card-tag">动手创造 · 把作品带回家</span>
+                                <h4>3D 打印半日营</h4>
+                                <p>亲手设计并打印无人机保护罩、小挂件或卡通模型，体验从无到有的创造乐趣，适合亲子手工坊打卡。</p>
+                                <span class="weekend-cta">预约工坊 → upzn.cn</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <p class="text-muted small mt-4 mb-0 text-center">
+                    更多成都本地遛娃攻略 → <a href="https://oijz.cn" target="_blank" rel="noopener">成都亲子飞行攻略站 · oijz.cn</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- 关于我们 -->
+        <section class="section-wrap" id="about">
+            <div class="container">
+                <p class="section-label">ABOUT US</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">关于我们</h2>
+                <p class="section-desc">
+                    振翔天航由退役军人团队联合创办，扎根成都天府新区，致力于青少年无人机科技教育与低空经济人才培养。我们不仅是培训机构，更是行业规范与品质的践行者。
+                </p>
+
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <h3 class="h5 mb-4" style="color: var(--brand-navy); font-weight: 600;">发展历程</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">创立之初 · 军人初心</div>
+                                <p class="text-muted mb-0 small">创始团队曾服役于空军相关岗位，退役后投身青少年科技教育，将部队中形成的安全意识、纪律作风与责任担当融入教学实践，创立振翔天航品牌。</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">基地落成 · 成都天府新区</div>
+                                <p class="text-muted mb-0 small">在天府招商花园城设立振翔天航青少年航空科技探索中心，配备专业飞行围栏、竞赛赛道与教学设备，成为天府新区低空科技教育的重要阵地。</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">资质完善 · 体系化建设</div>
+                                <p class="text-muted mb-0 small">逐步取得民航局授权培训相关资质，教练员团队持证上岗，形成从兴趣启蒙到竞赛集训的完整培养体系，学员多次在市级、省级及全国赛事中获奖。</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">业务拓展 · 多元服务</div>
+                                <p class="text-muted mb-0 small">陆续推出无人机足球体验营、FPV 竞速飞行中心、3D 创客工坊与成都亲子攻略等内容平台，为不同年龄与兴趣的学员提供更丰富的学习与体验选择。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="h5 mb-4" style="color: var(--brand-navy); font-weight: 600;">企业文化</h3>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="value-card">
+                                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                                    <h4>安全第一</h4>
+                                    <p class="text-muted small mb-0">军事化安全管理制度，每堂课严格执行飞行前检查与场地管控，让家长放心、学员安心。</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="value-card">
+                                    <div class="value-icon"><i class="fas fa-medal"></i></div>
+                                    <h4>严谨专业</h4>
+                                    <p class="text-muted small mb-0">教练员持证上岗，课程对标民航培训标准与教育部白名单赛事规程，拒绝「野路子」教学。</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="value-card">
+                                    <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                                    <h4>诚信负责</h4>
+                                    <p class="text-muted small mb-0">不夸大升学效果，不制造教育焦虑，以真实赛场成绩与学员成长说话，赢得家长长期信任。</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="value-card">
+                                    <div class="value-icon"><i class="fas fa-rocket"></i></div>
+                                    <h4>探索创新</h4>
+                                    <p class="text-muted small mb-0">紧跟低空经济与无人机产业发展，持续更新课程内容与竞赛备赛方向，培养面向未来的科技人才。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="h5 mt-5 mb-4" style="color: var(--brand-navy); font-weight: 600;">成都基地实景</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <img class="gallery-img" src="dist/assets/img/event/event-practice.png" alt="振翔天航成都基地教学现场" />
+                        <p class="gallery-caption">天府新区教学基地 · 科技体验活动</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="gallery-img" src="dist/assets/img/parents/racing-gates.png" alt="学员实操训练" />
+                        <p class="gallery-caption">专业教练指导 · 一对一实操训练</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="gallery-img" src="dist/assets/img/event/event-crowd.png" alt="基地开放日活动" />
+                        <p class="gallery-caption">基地开放日 · 家长参观体验</p>
+                    </div>
+                </div>
+                <p class="text-muted small mt-3 mb-0">
+                    <i class="fas fa-map-marker-alt me-1"></i>
+                    四川省成都市天府新区天府招商花园城 L3-027 · 地铁 6 号线秦皇寺站 · 振翔天航青少年航空科技探索中心
+                </p>
+            </div>
+        </section>
+
+        <!-- 资质荣誉 -->
+        <section class="section-wrap alt-bg" id="honors">
+            <div class="container">
+                <p class="section-label">QUALIFICATIONS &amp; HONORS</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">资质荣誉</h2>
+                <p class="section-desc">
+                    合规经营、持证教学、荣誉见证——我们用可查验的资质与成果，为每一位家长和合作伙伴建立信任。
+                </p>
+
+                <div class="honor-grid">
+                    <div class="honor-item">
+                        <div class="honor-icon"><i class="fas fa-certificate"></i></div>
+                        <h4>民航局授权培训资质</h4>
+                        <p>具备民用无人机驾驶员培训相关授权资质，教学体系符合民航管理规范要求。</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-icon"><i class="fas fa-id-card"></i></div>
+                        <h4>教练员执业证书</h4>
+                        <p>核心教练团队均持有无人机教练员执业资格证，定期参加继续教育与考核。</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-icon"><i class="fas fa-trophy"></i></div>
+                        <h4>赛事获奖荣誉</h4>
+                        <p>学员在市级、省级及全国青少年无人机赛事中屡获佳绩，获奖证书与奖杯留存备查。</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-icon"><i class="fas fa-building"></i></div>
+                        <h4>企业主体合规</h4>
+                        <p>成都振翔天航科技有限公司依法注册经营，网站备案齐全，合同签署主体明确。</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-icon"><i class="fas fa-list-check"></i></div>
+                        <h4>白名单赛事参与</h4>
+                        <p>深度参与教育部白名单赛事体系，包括全国青少年无人机大赛等权威竞赛平台。</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-icon"><i class="fas fa-school"></i></div>
+                        <h4>教育局合作单位</h4>
+                        <p>与区域教育部门及中小学保持合作，开展课后服务、科技社团与研学实践，助力学校科技体育特色建设。</p>
+                    </div>
+                    <div class="honor-item">
+                        <div class="honor-icon"><i class="fas fa-users"></i></div>
+                        <h4>行业合作伙伴</h4>
+                        <p>与成都市青少年体育联合会等机构保持合作，参与区域科技体育赛事组织与推广。</p>
+                    </div>
+                </div>
+
+                <div class="trust-banner">
+                    <p>
+                        <i class="fas fa-quote-left me-2" style="color: var(--brand-gold);"></i>
+                        振翔天航坚持「资质先行、安全为本、成绩说话」。资质证书与获奖荣誉可现场查阅；家长到访基地可了解教练资质与教学环境。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 大型赛事承办案例 -->
+        <section class="section-wrap" id="events-case">
+            <div class="container">
+                <p class="section-label">EVENT HOSTING</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">大型赛事承办案例</h2>
+                <p class="section-desc">
+                    从基地联赛到市级邀请赛，振翔天航具备完整的赛事组织、执裁与后勤保障能力，持续承办青少年无人机系列赛事。
+                </p>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="case-card">
+                            <p class="case-year">2026 · 基地承办</p>
+                            <h4>元旦科技体验日 · 无人机实操挑战赛</h4>
+                            <p class="text-muted small mb-0">百余名学员与家长参与，设置足球对抗、越障飞行与模拟器挑战三大环节，配备专业围栏、计时系统与医疗预案，活动获家长广泛好评。</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="case-card">
+                            <p class="case-year">年度系列 · 区域联动</p>
+                            <h4>成都市青少年无人机足球邀请赛</h4>
+                            <p class="text-muted small mb-0">配合成都市青少年体育联合会等机构，提供场地、设备、执裁与直播技术支持。振翔天航学员为主要参赛力量，积累市级赛场经验。</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="case-card">
+                            <p class="case-year">每月举办 · 以赛促练</p>
+                            <h4>基地内部联赛 · 3v3 空中对抗</h4>
+                            <p class="text-muted small mb-0">天府新区基地每月举办内部友谊赛，学员按水平分组对抗，模拟白名单赛事流程，培养赛场心态与团队协作能力。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 优秀学员获奖荣誉 -->
+        <section class="section-wrap alt-bg" id="student-honors">
+            <div class="container">
+                <p class="section-label">STUDENT ACHIEVEMENTS</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">优秀学员获奖荣誉</h2>
+                <p class="section-desc">
+                    记录学员在市级、省级及全国青少年无人机赛事中的获奖情况。
+                </p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="award-item">
+                            <div class="award-medal"><i class="fas fa-trophy"></i></div>
+                            <div>
+                                <h4>省级越障竞速 · 三等奖</h4>
+                                <p class="text-muted small mb-0">学员 L · 2026 年四川省青少年无人机赛事越障竞速项目，从零基础到赛道夺牌，训练周期 8 个月。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="award-item">
+                            <div class="award-medal"><i class="fas fa-medal"></i></div>
+                            <div>
+                                <h4>市级无人机足球 · 团体优胜</h4>
+                                <p class="text-muted small mb-0">振翔天航校队 · 2026 成都市青少年无人机足球邀请赛，3v3 团队配合与战术执行获裁判组好评。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="award-item">
+                            <div class="award-medal"><i class="fas fa-star"></i></div>
+                            <div>
+                                <h4>全国赛集训营 · 入选学员</h4>
+                                <p class="text-muted small mb-0">多名学员通过区级、市级选拔，进入第十届全国青少年无人机大赛备赛集训名单，按 2026 新规则系统训练。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="award-item">
+                            <div class="award-medal"><i class="fas fa-certificate"></i></div>
+                            <div>
+                                <h4>民航局驾驶员理论 · 通过</h4>
+                                <p class="text-muted small mb-0">学员 W · 完成系统化培训后通过民航局无人机驾驶员理论考试，备考实操考核中，规划职业飞手方向。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-muted small mt-4 mb-0 text-center">
+                    备赛路径详解 → <a href="https://ofvo.cn#courses" target="_blank" rel="noopener">足球青训</a> ·
+                    <a href="https://axmz.cn#training" target="_blank" rel="noopener">FPV 特训营</a> ·
+                    <a href="https://oijz.cn#competition" target="_blank" rel="noopener">竞赛升学攻略</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- 金牌教练团队 -->
+        <section class="section-wrap" id="coaches">
+            <div class="container">
+                <p class="section-label">COACHING TEAM</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">金牌教练团队</h2>
+                <p class="section-desc">
+                    退役军人创办团队，教练员持证上岗。从周末体验到竞赛集训，每位教练都有明确分工，保障教学专业性与安全标准。
+                </p>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="coach-card">
+                            <div class="coach-avatar"><i class="fas fa-user-tie"></i></div>
+                            <h4>易先生</h4>
+                            <p class="coach-role">品牌运营 · 课程咨询负责人</p>
+                            <p class="text-muted small mb-0">负责体验课预约、常规课程咨询与商务合作。熟悉三大业务线，可为家长快速匹配适合孩子的入门方向。</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="coach-card">
+                            <div class="coach-avatar"><i class="fas fa-trophy"></i></div>
+                            <h4>王先生</h4>
+                            <p class="coach-role">竞赛教练 · 备赛规划负责人</p>
+                            <p class="text-muted small mb-0">深耕无人机足球与 FPV 竞速集训，熟悉白名单赛事规则与备赛路径。带队学员多次在市级、省级赛事中获奖。</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="coach-card">
+                            <div class="coach-avatar"><i class="fas fa-certificate"></i></div>
+                            <h4>核心教练组</h4>
+                            <p class="coach-role">民航体系 · 持证执教</p>
+                            <p class="text-muted small mb-0">教练团队持有无人机教练员执业资格证，定期参加继续教育。按民航培训标准执行飞行前检查、场地管控与学员分级教学。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 综合新闻 -->
+        <section class="section-wrap" id="news">
+            <div class="container">
+                <p class="section-label">NEWS &amp; MEDIA</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">综合新闻</h2>
+                <p class="section-desc">
+                    记录振翔天航的重大活动、行业参与与媒体报道，呈现品牌成长的真实足迹。
+                </p>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <article class="news-card">
+                            <img src="dist/assets/img/event/event-overview.png" alt="元旦科技体验活动" />
+                            <div class="news-card-body">
+                                <p class="news-date">2026.01.01</p>
+                                <h4>元旦科技体验日活动圆满举办，百余名学员参与无人机实操</h4>
+                                <p class="text-muted small mb-2">振翔天航在天府新区基地举办新年首场科技体验活动，学员在专业教练指导下完成足球无人机操控与越障飞行挑战，活动获家长广泛好评。</p>
+                                <span class="news-tag">品牌活动</span>
+                                <span class="news-tag">成都基地</span>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="news-card">
+                            <img src="dist/assets/img/parents/drone-soccer.png" alt="无人机足球赛事集训" />
+                            <div class="news-card-body">
+                                <p class="news-date">2026 赛季</p>
+                                <h4>振翔天航竞赛集训班启动，备战第十届全国青少年无人机大赛</h4>
+                                <p class="text-muted small mb-2">针对 2026 年空中对抗赛新规则，集训班重点强化 3V3 团队配合、锁头模式与设备合规训练，为学员提供从市赛到国赛的完整备赛路径。</p>
+                                <span class="news-tag">赛事动态</span>
+                                <span class="news-tag">竞赛集训</span>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="news-card">
+                            <img src="dist/assets/img/event/event-practice.png" alt="白名单赛事政策解读" />
+                            <div class="news-card-body">
+                                <p class="news-date">2026 政策速递</p>
+                                <h4>2026 年青少年无人机赛事体系调整，振翔天航发布官方解读</h4>
+                                <p class="text-muted small mb-2">针对飞北赛取消无人机项目、全国青少年无人机创新教育竞赛设立等新变化，公司通过旗下赛事资讯中心发布权威解读，帮助家长科学规划备赛方向。</p>
+                                <span class="news-tag">媒体报道</span>
+                                <span class="news-tag">政策解读</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <p class="text-muted small mt-4 mb-0 text-center">
+                    更多动态请关注
+                    <a href="https://mp.weixin.qq.com/s/5yt2ekPTYT3xMt97hCnvFA" target="_blank" rel="noopener">振翔天航微信公众号</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- 旗下品牌 -->
+        <section class="section-wrap alt-bg" id="brands">
+            <div class="container">
+                <p class="section-label">OUR BRANDS</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">旗下品牌站点</h2>
+                <p class="section-desc">
+                    振翔天航旗下业务涵盖无人机足球、FPV 竞速、3D 创客与成都本地亲子攻略，家长可按孩子兴趣点击下方站点了解详情。
+                </p>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <a class="brand-link" href="https://ofvo.cn" target="_blank" rel="noopener">
+                            <span class="brand-link-icon"><i class="fas fa-futbol"></i></span>
+                            <span>
+                                <strong>天航无人机足球体验营</strong>
+                                <span class="domain">ofvo.cn · 趣味启蒙与团队竞技</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="brand-link" href="https://axmz.cn" target="_blank" rel="noopener">
+                            <span class="brand-link-icon"><i class="fas fa-bolt"></i></span>
+                            <span>
+                                <strong>天航 FPV 竞速飞行中心</strong>
+                                <span class="domain">axmz.cn · 速度体验与职业飞手</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="brand-link" href="https://upzn.cn" target="_blank" rel="noopener">
+                            <span class="brand-link-icon"><i class="fas fa-cube"></i></span>
+                            <span>
+                                <strong>天航 3D 创客工坊</strong>
+                                <span class="domain">upzn.cn · 动手乐趣与工程技能</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="brand-link" href="https://oijz.cn" target="_blank" rel="noopener">
+                            <span class="brand-link-icon"><i class="fas fa-newspaper"></i></span>
+                            <span>
+                                <strong>成都亲子飞行攻略站</strong>
+                                <span class="domain">oijz.cn · 本地育儿攻略与赛事解读</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系报名 -->
+        <section class="section-wrap" id="contact">
+            <div class="container">
+                <p class="section-label">CONTACT US</p>
+                <div class="gold-line"></div>
+                <h2 class="section-title">联系 / 报名</h2>
+                <p class="section-desc">
+                    无论您想咨询课程、了解赛事、商务合作或媒体采访，均可通过以下统一入口联系我们。工作时间内我们将尽快回复。
+                </p>
+
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="contact-panel h-100">
+                            <h3 class="h5 mb-4" style="color: var(--brand-gold-light);">统一咨询入口</h3>
+                            <div class="contact-item">
+                                <i class="fas fa-user"></i>
+                                <div>
+                                    <strong>易先生</strong> · 品牌运营负责人<br />
+                                    <a href="tel:15928633886">159 2863 3886</a>
+                                    <a class="ms-2 small opacity-75" href="javascript:" onclick="copyText('15928633886')">[复制微信]</a>
+                                    <span class="d-block small opacity-75 mt-1">课程咨询、体验预约、商务合作</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-user"></i>
+                                <div>
+                                    <strong>王先生</strong> · 竞赛教练负责人<br />
+                                    <a href="tel:15800802787">158 0080 2787</a>
+                                    <a class="ms-2 small opacity-75" href="javascript:" onclick="copyText('15800802787')">[复制微信]</a>
+                                    <span class="d-block small opacity-75 mt-1">竞赛集训、赛事规划、教练对接</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>成都基地地址</strong><br />
+                                    <span class="small opacity-90">
+                                        四川省成都市天府新区天府招商花园城 L3-027<br />
+                                        振翔天航青少年航空科技探索中心 · 地铁 6 号线秦皇寺站
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>工作时间</strong><br />
+                                    <span class="small opacity-90">周二至周日 10:00 – 19:00（周一休息）</span>
+                                    <span class="d-block small opacity-75 mt-1">可电话/微信咨询，也欢迎实地考察</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>电子邮箱</strong><br />
+                                    <a href="mailto:531103135@qq.com">531103135@qq.com</a>
+                                </div>
+                            </div>
+                            <a class="cta-btn" href="tel:15928633886"><i class="fas fa-phone me-2"></i>立即致电咨询</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="value-card h-100">
+                            <h4 class="mb-3" style="color: var(--brand-navy);">关注官方动态</h4>
+                            <p class="text-muted small">扫码关注微信公众号，获取活动预告、赛事通知与品牌资讯。</p>
+                            <p class="small mb-1"><strong>振翔天航无人机俱乐部</strong></p>
+                            <img
+                                src="dist/assets/img/wechat-qrcode.png"
+                                alt="扫码关注公众号：振翔天航无人机俱乐部"
+                                class="wechat-qrcode"
+                            />
+                            <hr class="my-4" />
+                            <h4 class="mb-3" style="color: var(--brand-navy);">咨询类型指引</h4>
+                            <ul class="text-muted small mb-0 ps-3">
+                                <li class="mb-2">体验课 / 常规课程 → 联系易先生</li>
+                                <li class="mb-2">竞赛集训 / 备赛规划 → 联系王先生</li>
+                                <li class="mb-2">媒体采访 / 商务合作 → 发送邮件或致电易先生</li>
+                                <li>周末攻略与活动资讯 → <a href="https://oijz.cn" target="_blank" rel="noopener">oijz.cn</a> · 体验导览 → <a href="#weekend">三大体验站</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="container text-center">
+                <p class="mb-0">
+                    <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">蜀ICP备2026022939号-1</a>
+                </p>
+            </div>
+        </footer>
+
+        <script>
+            function copyText(text) {
+                navigator.clipboard.writeText(text).then(function () {
+                    var tip = document.createElement("div");
+                    tip.innerText = "已复制：" + text;
+                    tip.style.cssText = "position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.75);color:#fff;padding:12px 24px;border-radius:8px;z-index:9999;font-size:15px;";
+                    document.body.appendChild(tip);
+                    setTimeout(function () { tip.remove(); }, 2000);
+                });
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
