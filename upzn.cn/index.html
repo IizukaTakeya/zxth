@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="天航3D创客工坊 — 无人机硬件背后的黑科技实验室。3D打印体验课、小小建模师半日营；建模技能考证、竞速机架定制打印。蜀ICP备2026022939号-4。" />
+    <meta name="author" content="振翔天航" />
+    <title>天航 3D 创客工坊 · 振翔天航</title>
+    <link rel="icon" type="image/x-icon" href="dist/assets/img/profile.jpg" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --maker-steel: #3d4f5f;
+            --maker-dark: #1e2a35;
+            --maker-orange: #e85d04;
+            --maker-orange-light: #f48c06;
+            --maker-bg: #f0f2f4;
+            --maker-border: #d0d7de;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "Noto Sans SC", "IBM Plex Sans", sans-serif;
+            color: #2c3e50;
+            background: #fff;
+        }
+
+        .top-nav {
+            background: var(--maker-dark);
+            border-bottom: 3px solid var(--maker-orange);
+        }
+        .top-nav .navbar-brand {
+            font-weight: 700;
+            color: #fff !important;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+        }
+        .top-nav .navbar-brand span {
+            color: var(--maker-orange-light);
+            font-size: 0.72rem;
+            display: block;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+        }
+        .top-nav .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .top-nav .nav-link:hover { color: var(--maker-orange-light) !important; }
+        .top-nav .navbar-toggler { border-color: rgba(255,255,255,0.3); }
+        .top-nav .navbar-toggler-icon { filter: invert(1); }
+
+        .hero {
+            background: linear-gradient(160deg, var(--maker-dark) 0%, var(--maker-steel) 100%);
+            color: #fff;
+            padding: 5.5rem 0 4.5rem;
+            position: relative;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                rgba(255,255,255,0.02) 40px,
+                rgba(255,255,255,0.02) 41px
+            );
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: var(--maker-orange);
+            color: #fff;
+            padding: 0.3rem 0.85rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section { padding: 4rem 0; }
+        .section-alt { background: var(--maker-bg); }
+        .section-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            color: var(--maker-orange);
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .section-title {
+            font-size: clamp(1.4rem, 3vw, 1.85rem);
+            font-weight: 700;
+            color: var(--maker-dark);
+            margin-bottom: 0.75rem;
+        }
+        .accent-bar {
+            width: 48px; height: 4px;
+            background: var(--maker-orange);
+            margin-bottom: 1.25rem;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid var(--maker-border);
+            border-radius: 4px;
+            padding: 1.75rem;
+            height: 100%;
+            border-top: 3px solid var(--maker-orange);
+            transition: box-shadow 0.25s;
+        }
+        .service-card:hover { box-shadow: 0 8px 24px rgba(30, 42, 53, 0.1); }
+        .service-icon {
+            width: 44px; height: 44px;
+            background: rgba(232, 93, 4, 0.1);
+            color: var(--maker-orange);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-item {
+            border: 1px solid var(--maker-border);
+            border-radius: 4px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .gallery-item img { width: 100%; height: auto; display: block; }
+        .gallery-item .caption {
+            padding: 0.85rem 1rem;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--maker-border);
+        }
+
+        .course-row {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--maker-border);
+        }
+        .course-row:last-child { border-bottom: none; }
+        .course-num {
+            flex-shrink: 0;
+            width: 40px; height: 40px;
+            background: var(--maker-dark);
+            color: var(--maker-orange-light);
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .bridge-box {
+            background: var(--maker-dark);
+            color: #fff;
+            border-radius: 4px;
+            padding: 2rem;
+            border-left: 4px solid var(--maker-orange);
+        }
+        .bridge-box a { color: var(--maker-orange-light); }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--maker-orange);
+            color: #fff;
+            font-weight: 600;
+            padding: 0.65rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .cta-btn:hover { background: var(--maker-orange-light); color: #fff; }
+
+        .site-footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #6c757d;
+            border-top: 1px solid var(--maker-border);
+        }
+        .site-footer a { color: #6c757d; text-decoration: none; }
+        .experience-card {
+            background: #fff;
+            border: 1px solid var(--maker-border);
+            border-radius: 4px;
+            padding: 1.5rem;
+            height: 100%;
+            border-left: 4px solid var(--maker-orange);
+        }
+        .experience-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--maker-orange);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.4rem;
+        }
+        .section-divider {
+            text-align: center;
+            padding: 1rem 0;
+            color: #6c757d;
+            font-size: 0.82rem;
+            letter-spacing: 0.12em;
+            background: var(--maker-bg);
+        }
+    </style>
+</head>
+<body id="page-top">
+
+<nav class="navbar navbar-expand-lg top-nav sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top">天航创客工坊<span>3D PRINT · MAKER LAB</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#experience">创意体验</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">定制服务</a></li>
+                <li class="nav-item"><a class="nav-link" href="#courses">技能培训</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">作品库</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">预约工坊</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container position-relative">
+        <span class="hero-tag">动手乐趣 · 工程技能</span>
+        <h1 class="mb-3">天航 3D 创客工坊</h1>
+        <p class="lead mb-4" style="max-width: 36rem; opacity: 0.9;">
+            无人机硬件背后的「黑科技」实验室与技能培训中心。周末开设亲子 3D 打印体验课，也为足球与竞速队伍提供专业配件定制，把创意变成可上手的工程技能。
+        </p>
+        <a class="cta-btn" href="#experience"><i class="fas fa-child me-2"></i>周末创意体验课</a>
+        <p class="small mt-3 mb-0" style="opacity:0.75;"><i class="fas fa-clock me-1"></i>开放时间：周二至周日 10:00–19:00（周一休息）· 可电话/微信咨询，也欢迎实地考察</p>
+    </div>
+</header>
+
+<section class="section section-alt" id="experience">
+    <div class="container">
+        <p class="section-label">WEEKEND FUN</p>
+        <div class="accent-bar"></div>
+        <h2 class="section-title">创意体验课</h2>
+        <p class="text-muted mb-4" style="max-width: 36rem;">主打「把创意带回家」——让孩子亲手设计并打印作品，体验从无到有的创造乐趣。可电话/微信咨询，也欢迎在开放时间内实地考察工坊。</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="experience-card">
+                    <p class="experience-tag">热门 · 单次体验</p>
+                    <h4 class="h6 mb-2">3D 打印体验课</h4>
+                    <p class="text-muted small mb-2">90 分钟：认识打印机 → 选择模型 → 现场打印一个小挂件带回家。无需任何建模基础，适合 6 岁以上亲子。</p>
+                    <a href="tel:15928633886" class="small fw-bold" style="color:var(--maker-orange);">预约：159 2863 3886</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="experience-card">
+                    <p class="experience-tag">周末 · 半日营</p>
+                    <h4 class="h6 mb-2">小小建模师半日营</h4>
+                    <p class="text-muted small mb-2">3 小时深度体验：用 Tinkercad 设计无人机保护罩或卡通模型 → 切片打印 → 现场组装测试。作品可带走。</p>
+                    <a href="tel:15928633886" class="small fw-bold" style="color:var(--maker-orange);">预约半日营</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="experience-card">
+                    <p class="experience-tag">亲子 · 手工坊</p>
+                    <h4 class="h6 mb-2">周末创客打卡</h4>
+                    <p class="text-muted small mb-2">工业风创客空间，空调恒温环境。可打印钥匙扣、名牌、迷你无人机零件，适合下雨天室内遛娃。更多攻略 → <a href="https://oijz.cn" target="_blank" rel="noopener">oijz.cn</a></p>
+                    <a href="tel:15928633886" class="small fw-bold" style="color:var(--maker-orange);">咨询打卡活动</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider">爱上创造之后 · 走向专业技能</div>
+
+<section class="section" id="services">
+    <div class="container">
+        <p class="section-label">CUSTOM SERVICES</p>
+        <div class="accent-bar"></div>
+        <h2 class="section-title">技能与定制服务</h2>
+        <p class="text-muted mb-4" style="max-width: 36rem;">针对对硬件感兴趣的孩子，开设建模技能考证与无人机硬件维护培训；同时为足球与竞速竞赛队伍提供专业配件定制。</p>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4 class="h6 mb-2">保护罩 / 涵道</h4>
+                    <p class="text-muted small mb-0">足球无人机球形护罩、穿越机桨叶保护、涵道风扇外壳——按机型参数定制，减少训练损耗。</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+                    <h4 class="h6 mb-2">机架 / 起落架</h4>
+                    <p class="text-muted small mb-0">轻量化机架横梁、电池仓、起落架脚垫等结构件，支持快速迭代打样与应力优化。</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-puzzle-piece"></i></div>
+                    <h4 class="h6 mb-2">异形改装件</h4>
+                    <p class="text-muted small mb-0">摄像头支架、天线座、收纳盒、赛道障碍门连接件——解决市面上买不到的标准件问题。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bridge-box mt-4">
+            <p class="mb-2"><strong>想打印自己的无人机配件？</strong></p>
+            <p class="small mb-0 opacity-90">建议先来学 FPV 飞行，了解结构与受力原理，打印出来的零件才靠谱。
+            前往 <a href="https://axmz.cn" target="_blank" rel="noopener">天航 FPV 竞速飞行中心</a> 预约体验课，或阅读
+            <a href="https://oijz.cn" target="_blank" rel="noopener">成都亲子飞行攻略站</a> 的「炸机维修」干货教程。</p>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="courses">
+    <div class="container">
+        <p class="section-label">SKILL TRAINING</p>
+        <div class="accent-bar"></div>
+        <h2 class="section-title">短期技能培训</h2>
+        <p class="text-muted mb-4">小班授课，侧重实操。适合对硬件动手感兴趣的学生、创客爱好者与无人机学员。</p>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="service-card h-100">
+                    <div class="course-row">
+                        <div class="course-num">01</div>
+                        <div>
+                            <h4 class="h6 mb-1">3D 建模基础</h4>
+                            <p class="text-muted small mb-0">Fusion 360 / Tinkercad 入门，从草图到实体建模，完成一个无人机零件的完整设计流程。约 4 课时。</p>
+                        </div>
+                    </div>
+                    <div class="course-row">
+                        <div class="course-num">02</div>
+                        <div>
+                            <h4 class="h6 mb-1">切片与打印实操</h4>
+                            <p class="text-muted small mb-0">Cura / PrusaSlicer 参数设置、支撑策略、材料选择，独立完成一件作品从建模到出品。约 3 课时。</p>
+                        </div>
+                    </div>
+                    <div class="course-row">
+                        <div class="course-num">03</div>
+                        <div>
+                            <h4 class="h6 mb-1">3D 建模技能考证</h4>
+                            <p class="text-muted small mb-0">对接 1+X 职业技能方向，Fusion 360 系统建模 + 作品答辩。适合对工程设计有长期兴趣的初高中生。约 16 课时。</p>
+                        </div>
+                    </div>
+                    <div class="course-row">
+                        <div class="course-num">04</div>
+                        <div>
+                            <h4 class="h6 mb-1">无人机硬件维护培训</h4>
+                            <p class="text-muted small mb-0">电机、电调、飞控故障排查与基础维修，配合实机拆装练习。为竞速与足球队伍学员提供硬件保障能力。约 6 课时。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card h-100">
+                    <h4 class="h6 mb-3"><i class="fas fa-wrench me-2" style="color:var(--maker-orange);"></i>工坊配置</h4>
+                    <ul class="text-muted small ps-3 mb-3">
+                        <li class="mb-2">FDM 3D 打印机多台，支持 PLA / PETG / TPU</li>
+                        <li class="mb-2">设计工作站预装主流建模与切片软件</li>
+                        <li class="mb-2">无人机拆解台与常见机型零配件库</li>
+                        <li class="mb-0">与飞行训练区同址，学完即可测试打印件</li>
+                    </ul>
+                    <p class="text-muted small mb-0">工坊位于振翔天航成都基地内，与飞行培训共享场地与教练资源，实现「设计—打印—试飞」一站式体验。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="gallery">
+    <div class="container">
+        <p class="section-label">PORTFOLIO</p>
+        <div class="accent-bar"></div>
+        <h2 class="section-title">作品库</h2>
+        <p class="text-muted mb-4">学员与团队在工坊完成的代表性打印作品。</p>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="dist/assets/img/works/jet-engine.png" alt="涡扇发动机剖面模型" />
+                    <div class="caption"><strong>涡扇发动机剖面模型</strong><br><span class="text-muted">多色分件打印，螺栓组装，适合科创展示</span></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="dist/assets/img/works/v8-engine.png" alt="活塞发动机传动模型" />
+                    <div class="caption"><strong>活塞发动机传动模型</strong><br><span class="text-muted">皮带轮系 + 多色缸体，工程结构一目了然</span></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="dist/assets/img/works/figurines.png" alt="定制手办与摆件" />
+                    <div class="caption"><strong>定制手办与摆件</strong><br><span class="text-muted">学员设计打印，钥匙扣、手办、机甲模型均可做</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="contact">
+    <div class="container">
+        <p class="section-label">CONTACT</p>
+        <div class="accent-bar"></div>
+        <h2 class="section-title">预约工坊体验</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="service-card">
+                    <p class="mb-2"><strong>易先生</strong> · 课程与工坊咨询</p>
+                    <p class="mb-3"><a href="tel:15928633886">159 2863 3886</a>
+                    <a href="javascript:" class="ms-2 small text-muted" onclick="copyText('15928633886')">[复制微信]</a></p>
+                    <p class="mb-2"><strong>王先生</strong> · 配件设计与飞行测试</p>
+                    <p class="mb-3"><a href="tel:15800802787">158 0080 2787</a>
+                    <a href="javascript:" class="ms-2 small text-muted" onclick="copyText('15800802787')">[复制微信]</a></p>
+                    <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt me-1"></i>成都天府新区天府招商花园城 L3-027</p>
+                    <p class="text-muted small mt-2 mb-0"><i class="fas fa-clock me-1"></i>开放时间：周二至周日 10:00–19:00（周一休息）· 可电话/微信咨询，也欢迎实地考察</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-card">
+                    <p class="text-muted small mb-2">了解公司资质 → <a href="https://poqn.cn" target="_blank" rel="noopener">振翔天航官方主站</a></p>
+                    <p class="text-muted small mb-0">无人机足球团队课程 → <a href="https://ofvo.cn" target="_blank" rel="noopener">ofvo.cn</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <p class="mb-0"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">蜀ICP备2026022939号-4</a></p>
+</footer>
+
+<script>
+function copyText(t) {
+    navigator.clipboard.writeText(t).then(function() {
+        var el = document.createElement('div');
+        el.innerText = '已复制：' + t;
+        el.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.75);color:#fff;padding:12px 24px;border-radius:8px;z-index:9999;';
+        document.body.appendChild(el);
+        setTimeout(function(){ el.remove(); }, 2000);
+    });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
