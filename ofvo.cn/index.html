@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="天航无人机足球体验营 — 成都最酷的科技体育周末遛娃基地。零门槛亲子体验、家庭对抗赛、生日派对包场；校队选拔与职业梯队青训，备战白名单赛事。蜀ICP备2026022939号-2。" />
+        <meta name="author" content="振翔天航" />
+        <title>天航无人机足球体验营 · 振翔天航</title>
+        <link rel="icon" type="image/x-icon" href="dist/assets/img/profile.jpg" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <link href="dist/css/styles.css" rel="stylesheet" />
+        <style>
+            .drone-img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            .stat-item { text-align: center; padding: 1.25rem; }
+            .stat-number {
+                font-family: "Saira Extra Condensed", sans-serif;
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #bd5d38;
+                line-height: 1;
+            }
+            .stat-label { font-size: 0.9rem; color: #6c757d; margin-top: 0.35rem; }
+            .feature-card {
+                background: #fff;
+                border: 1px solid #e9ecef;
+                border-radius: 12px;
+                padding: 1.5rem;
+                height: 100%;
+            }
+            .feature-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 10px;
+                background: rgba(189, 93, 56, 0.1);
+                color: #bd5d38;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.25rem;
+                margin-bottom: 0.85rem;
+            }
+            .skill-step {
+                position: relative;
+                padding-left: 3rem;
+                margin-bottom: 1.75rem;
+            }
+            .skill-step:last-child { margin-bottom: 0; }
+            .skill-step::before {
+                content: attr(data-step);
+                position: absolute;
+                left: 0;
+                top: 0.1rem;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                background: #bd5d38;
+                color: #fff;
+                font-family: "Saira Extra Condensed", sans-serif;
+                font-weight: 700;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .rule-table th { background: rgba(189, 93, 56, 0.08); color: #495057; }
+            .quote-block {
+                border-left: 4px solid #bd5d38;
+                padding: 1rem 1.25rem;
+                background: rgba(189, 93, 56, 0.06);
+                border-radius: 0 8px 8px 0;
+                color: #495057;
+            }
+            .knowledge-link {
+                display: block;
+                padding: 0.85rem 1rem;
+                border: 1px solid #e9ecef;
+                border-radius: 8px;
+                color: #495057;
+                text-decoration: none;
+                margin-bottom: 0.75rem;
+                transition: border-color 0.2s, color 0.2s;
+            }
+            .knowledge-link:hover {
+                border-color: #bd5d38;
+                color: #bd5d38;
+            }
+            .knowledge-link i { color: #bd5d38; margin-right: 0.5rem; }
+            .change-badge {
+                display: inline-block;
+                background: #bd5d38;
+                color: #fff;
+                font-size: 0.7rem;
+                padding: 0.15rem 0.5rem;
+                border-radius: 4px;
+                vertical-align: middle;
+                margin-left: 0.35rem;
+                font-weight: 600;
+            }
+            .compare-row { font-size: 0.9rem; }
+            .compare-row .year-old { color: #6c757d; }
+            .compare-row .year-new { color: #495057; }
+            .emergency-box {
+                background: #fff9f5;
+                border: 1px solid rgba(189, 93, 56, 0.35);
+                border-radius: 12px;
+                padding: 1.25rem 1.5rem;
+            }
+            .emergency-box .emergency-title {
+                color: #bd5d38;
+                font-weight: 700;
+                margin-bottom: 0.75rem;
+            }
+            .checklist li {
+                margin-bottom: 0.5rem;
+                padding-left: 0.25rem;
+            }
+            .checklist .fa-check-circle {
+                color: #bd5d38;
+                margin-right: 0.45rem;
+            }
+            .hero-banner {
+                background: linear-gradient(135deg, #1a5f4a 0%, #0d3d2e 50%, #1a4d6d 100%);
+                color: #fff;
+                border-radius: 12px;
+                padding: 2rem 2.25rem;
+                margin-bottom: 2rem;
+                position: relative;
+                overflow: hidden;
+            }
+            .hero-banner::before {
+                content: "";
+                position: absolute;
+                right: -20px; top: -20px;
+                width: 180px; height: 180px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.06);
+            }
+            .hero-banner h2 { color: #fff; font-size: 1.5rem; }
+            .weekend-card {
+                background: #fff;
+                border: 2px solid #e9ecef;
+                border-radius: 12px;
+                overflow: hidden;
+                height: 100%;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+            .weekend-card:hover {
+                border-color: #1a5f4a;
+                box-shadow: 0 6px 20px rgba(26, 95, 74, 0.12);
+            }
+            .weekend-card-img {
+                width: 100%;
+                height: 168px;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            }
+            .weekend-card-body { padding: 1.25rem 1.5rem 1.35rem; }
+            .weekend-card .weekend-tag {
+                display: inline-block;
+                background: rgba(26, 95, 74, 0.12);
+                color: #1a5f4a;
+                font-size: 0.72rem;
+                font-weight: 600;
+                padding: 0.2rem 0.55rem;
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+            .convert-divider {
+                text-align: center;
+                padding: 1.5rem 0;
+                color: #6c757d;
+                font-size: 0.85rem;
+                letter-spacing: 0.1em;
+            }
+            .convert-divider::before,
+            .convert-divider::after {
+                content: "◆";
+                color: #bd5d38;
+                margin: 0 0.75rem;
+                font-size: 0.6rem;
+            }
+            .school-card {
+                background: #fff;
+                border: 1px solid #e9ecef;
+                border-radius: 12px;
+                padding: 1.5rem;
+                height: 100%;
+            }
+            .school-card .school-tag {
+                display: inline-block;
+                background: rgba(26, 95, 74, 0.12);
+                color: #1a5f4a;
+                font-size: 0.75rem;
+                font-weight: 600;
+                padding: 0.2rem 0.6rem;
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+            .event-card {
+                border-left: 4px solid #bd5d38;
+                background: rgba(189, 93, 56, 0.05);
+                border-radius: 0 8px 8px 0;
+                padding: 1.25rem 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .event-card:last-child { margin-bottom: 0; }
+            .course-tier {
+                background: linear-gradient(180deg, #fff 0%, #fafbfc 100%);
+                border: 1px solid #e9ecef;
+                border-radius: 12px;
+                padding: 1.5rem;
+                height: 100%;
+            }
+            .course-tier h4 { color: #bd5d38; font-size: 0.85rem; letter-spacing: 0.05em; }
+            .equipment-card {
+                background: #fff;
+                border: 1px solid #e9ecef;
+                border-radius: 12px;
+                overflow: hidden;
+                height: 100%;
+            }
+            .equipment-photo {
+                background: #f4f6f8;
+                padding: 1.25rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 220px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            .equipment-photo img {
+                width: 100%;
+                max-width: 280px;
+                height: auto;
+                max-height: 200px;
+                object-fit: contain;
+                display: block;
+            }
+            .equipment-card-body { padding: 1.25rem 1.5rem; }
+            .equipment-card h4 { margin-bottom: 0.5rem; }
+            .equipment-credit {
+                font-size: 0.72rem;
+                color: #adb5bd;
+                margin-top: 0.65rem;
+                margin-bottom: 0;
+            }
+            .visit-hours {
+                font-size: 0.9rem;
+                color: #6c757d;
+                margin-bottom: 1rem;
+            }
+            .visit-hours i { color: #bd5d38; }
+            .intro-photo {
+                width: 100%;
+                height: 280px;
+                object-fit: cover;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            }
+            @media (min-width: 992px) {
+                section.resume-section { max-width: none; width: 100%; }
+                section.resume-section .resume-section-content {
+                    width: 100%;
+                    max-width: calc(100vw - 17rem - 6rem);
+                }
+            }
+        </style>
+    </head>
+    <body id="page-top" class="d-flex flex-column min-vh-100 m-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">无人机足球</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile aspect-ratio-1 object-fit-cover mb-2" src="dist/assets/img/profile.jpg" alt="振翔天航" /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#intro">首页</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#weekend">周末体验</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#courses">青训竞赛</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#events">赛事中心</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#schools">校园合作</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#rules">规则备赛</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid p-0">
+            <section class="resume-section" id="intro">
+                <div class="resume-section-content">
+                    <div class="hero-banner">
+                        <p class="small mb-2 opacity-75 text-uppercase" style="letter-spacing:0.12em;">趣味体验 · 专业竞赛</p>
+                        <h2 class="mb-2">天航无人机足球体验营</h2>
+                        <p class="mb-0 opacity-90" style="max-width:32rem;">成都最酷的「科技体育」周末遛娃基地与青训中心。像踢球一样好玩的空中对抗，零门槛上手，室内空调安全环境。</p>
+                    </div>
+                    <div class="row g-4 align-items-center mb-4">
+                        <div class="col-lg-7">
+                    <h1 class="mb-3">振翔天航</h1>
+                    <p class="h3 text-primary mb-3">无人机足球 · 趣味启蒙与团队竞技</p>
+                    <p class="lead mb-3">
+                        在安全防护场内操控球形无人机进行空中足球对抗，锻炼手眼协调、团队默契与战术思维。本网站提供<strong>周末体验预约</strong>与<strong>完整规则解读、备赛指南</strong>，实现从「玩」到「学」的自然过渡。
+                    </p>
+                    <p class="visit-hours mb-3">
+                        <i class="fas fa-clock me-1"></i>开放时间：<strong>周二至周日 10:00–19:00</strong>（周一休息）·
+                        <i class="fas fa-map-marker-alt ms-2 me-1"></i>天府招商花园城 L3-027 · 6号线秦皇寺站
+                    </p>
+                    <div class="subheading mb-3">
+                        电话/微信咨询 · 欢迎实地考察 ·
+                        <a href="tel:15928633886">159 2863 3886</a>（易先生）/
+                        <a href="tel:15800802787">158 0080 2787</a>（王先生）
+                    </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <img class="intro-photo" src="dist/assets/img/match/match-1.jpg" alt="振翔天航无人机足球赛场" />
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-4 stat-item">
+                            <div class="stat-number">5–16</div>
+                            <div class="stat-label">岁青少年专属</div>
+                        </div>
+                        <div class="col-md-4 stat-item">
+                            <div class="stat-number">3v3</div>
+                            <div class="stat-label">团队空中对抗</div>
+                        </div>
+                        <div class="col-md-4 stat-item">
+                            <div class="stat-number">白名单</div>
+                            <div class="stat-label">国家级赛事通道</div>
+                        </div>
+                    </div>
+                    <div class="social-icons">
+                        <a class="social-icon" href="javascript:" onclick="copyWechat('15928633886')" title="复制易先生微信"><i class="fab fa-weixin"></i></a>
+                        <a class="social-icon" href="tel:15928633886" title="拨打电话"><i class="fas fa-phone"></i></a>
+                        <a class="social-icon" href="tel:15800802787" title="拨打电话"><i class="fas fa-phone-volume"></i></a>
+                        <a class="social-icon" href="https://mp.weixin.qq.com/s/5yt2ekPTYT3xMt97hCnvFA" target="_blank" rel="noopener" title="微信公众号"><i class="fas fa-newspaper"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+
+            <section class="resume-section" id="weekend">
+                <div class="resume-section-content">
+                    <h2 class="mb-4">周末去哪儿</h2>
+                    <p class="lead text-muted mb-4">主打「零门槛上手」和「亲子互动」——无人机足球像踢球一样好玩，安全、有趣、适合全家周末打卡。</p>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="weekend-card">
+                                <img class="weekend-card-img" src="dist/assets/img/train/train-1.jpg" alt="周末单次体验课" />
+                                <div class="weekend-card-body">
+                                <span class="weekend-tag">热门 · 单次体验</span>
+                                <h4 class="h5 mb-2">周末单次体验课</h4>
+                                <p class="text-muted small mb-2">90 分钟入门课：安全规范 → 基础操控 → 亲子对抗体验。无需任何基础，教练全程一对一指导。</p>
+                                <a href="tel:15928633886" class="small fw-bold">预约：159 2863 3886</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="weekend-card">
+                                <img class="weekend-card-img" src="dist/assets/img/train/train-2.jpg" alt="家庭对抗赛" />
+                                <div class="weekend-card-body">
+                                <span class="weekend-tag">亲子 · 团队对抗</span>
+                                <h4 class="h5 mb-2">家庭对抗赛</h4>
+                                <p class="text-muted small mb-2">父母与孩子组队 3v3 空中足球，周末专属时段开放。增进亲子默契，留下酷炫合影与视频素材。</p>
+                                <a href="tel:15928633886" class="small fw-bold">预约：159 2863 3886</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="weekend-card">
+                                <img class="weekend-card-img" src="dist/assets/img/train/train-3.jpg" alt="儿童生日派对包场" />
+                                <div class="weekend-card-body">
+                                <span class="weekend-tag">派对 · 包场定制</span>
+                                <h4 class="h5 mb-2">儿童生日派对包场</h4>
+                                <p class="text-muted small mb-2">室内空调场地，含体验课 + 小型对抗赛 + 拍照打卡区。可定制主题装饰与活动流程，最多容纳 15 人。</p>
+                                <a href="tel:15928633886" class="small fw-bold">咨询包场方案</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-block mb-0">
+                        <i class="fas fa-shield-alt me-1"></i> 全包围护罩球形无人机 + 封闭式飞行围栏 + 室内恒温环境，让家长放心、孩子尽兴。想核实公司资质？→ <a href="https://poqn.cn" target="_blank" rel="noopener">振翔天航官方主站</a><br>
+                        <span class="small d-inline-block mt-2"><i class="fas fa-clock me-1"></i>开放时间：周二至周日 10:00–19:00 · 可电话/微信咨询，也欢迎实地考察</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="convert-divider">体验之后 · 深度培养</div>
+
+            <hr class="m-0" />
+
+            <section class="resume-section" id="courses">
+                <div class="resume-section-content">
+                    <h2 class="mb-4">青训与竞赛</h2>
+                    <p class="lead text-muted mb-4">针对体验后有兴趣的孩子，推出校队选拔与职业梯队。详细介绍竞技规则、团队协作要求，以及参加市级、省级乃至国家级青少年科技体育比赛的路径。</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4"><img class="drone-img" src="dist/assets/img/train/train-4.jpg" alt="青训课堂"></div>
+                        <div class="col-md-4"><img class="drone-img" src="dist/assets/img/match/match-2.jpg" alt="团队对抗训练"></div>
+                        <div class="col-md-4"><img class="drone-img" src="dist/assets/img/equipment/drone-ball.jpg" alt="无人机球器材"></div>
+                    </div>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="course-tier">
+                                <h4 class="mb-2">启蒙班</h4>
+                                <h3 class="h5 mb-2">小学低年级 · 6–10 岁</h3>
+                                <p class="text-muted small mb-0">趣味操控入门、安全规范、单人定点悬停与基础推进，培养兴趣与专注力。每班 6–8 人，配双教练。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="course-tier">
+                                <h4 class="mb-2">提高班</h4>
+                                <h3 class="h5 mb-2">小学高年级 · 10–13 岁</h3>
+                                <p class="text-muted small mb-0">3 对 3 团队配合、位置分工、战术演练，可参加区级、市级青少年赛事。强调沟通与规则意识。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="course-tier">
+                                <h4 class="mb-2">竞赛班</h4>
+                                <h3 class="h5 mb-2">初中 / 职业院校</h3>
+                                <p class="text-muted small mb-0">按 2026 全国赛规则集训，锁头模式、设备合规、金球制胜场景训练，目标省级及以上白名单赛事。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="h5 mb-3">校队选拔 · 职业梯队</h3>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="school-card">
+                                <span class="school-tag">校队选拔</span>
+                                <h4 class="h5 mb-2">校园科技体育校队组建</h4>
+                                <p class="text-muted small mb-2">面向体验后有兴趣、具备基础操控能力的孩子，通过选拔测试进入校队集训班。系统训练 3v3 团队配合、位置分工与战术执行，目标区级、市级白名单赛事。</p>
+                                <p class="text-muted small mb-0">合作学校可派教练入校授课，或组织学生到基地集中集训。咨询：<a href="tel:15928633886">159 2863 3886</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="school-card">
+                                <span class="school-tag">职业梯队</span>
+                                <h4 class="h5 mb-2">竞赛梯队 · 国赛备赛路径</h4>
+                                <p class="text-muted small mb-2">针对有明确竞赛目标的高年级学员，组建职业梯队进行高强度集训。按第十届全国青少年无人机大赛空中对抗赛新规则训练，覆盖锁头模式、设备合规与金球制胜场景。</p>
+                                <p class="text-muted small mb-0">完整路径：市赛 → 省赛 → 国赛。竞赛规划咨询：<a href="tel:15800802787">158 0080 2787</a>（王先生）</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-block mb-0">
+                        学校 / 机构批量采购培训服务？请致电 <a href="tel:15928633886">159 2863 3886</a>（易先生）洽谈校园合作方案，支持派教练入校、共建校队与赛事承办。
+                    </div>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+
+            <section class="resume-section" id="events">
+                <div class="resume-section-content">
+                    <h2 class="mb-4">赛事中心 <span class="text-primary">专业竞技舞台</span></h2>
+                    <p class="text-muted mb-4">发布与回顾振翔天航参与的无人机足球赛事，打造专业竞技形象。</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6"><img class="drone-img" src="dist/assets/img/match/match-1.jpg" alt="比赛现场" style="height:200px;"></div>
+                        <div class="col-md-6"><img class="drone-img" src="dist/assets/img/match/match-2.jpg" alt="团队对抗" style="height:200px;"></div>
+                    </div>
+                    <div class="event-card">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                            <strong>第十届全国青少年无人机大赛 · 空中对抗赛</strong>
+                            <span class="badge bg-primary">2026 筹备中</span>
+                        </div>
+                        <p class="text-muted small mb-2">无人机足球归入空中对抗赛子任务，新增锁头模式与设备改装合规要求。振翔天航竞赛班已按新规则启动集训。</p>
+                        <a href="#rules" class="small">查看完整规则解读 →</a>
+                    </div>
+                    <div class="event-card">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                            <strong>成都市青少年无人机足球邀请赛</strong>
+                            <span class="badge bg-secondary">年度系列</span>
+                        </div>
+                        <p class="text-muted small mb-0">由成都市青少年体育联合会等机构主办，振翔天航学员为主要参赛力量之一，积累市级赛场经验。</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                            <strong>基地内部联赛 · 3v3 对抗</strong>
+                            <span class="badge bg-success">每月举办</span>
+                        </div>
+                        <p class="text-muted small mb-0">天府新区基地每月举办内部友谊赛，学员按水平分组对抗，以赛促练、以赛促学。</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+
+            <section class="resume-section" id="schools">
+                <div class="resume-section-content">
+                    <h2 class="mb-4">校园合作 <span class="text-primary">B 端服务</span></h2>
+                    <p class="text-muted mb-4">与成都当地中小学、职业院校合作，提供课程输出、师资支持、器材方案与赛事组织，助力学校科技体育特色建设。</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-lg-5"><img class="drone-img" src="dist/assets/img/train/train-1.jpg" alt="校园研学参观基地" style="height:220px;"></div>
+                        <div class="col-lg-7 d-flex align-items-center">
+                            <p class="text-muted small mb-0"><i class="fas fa-school me-1 text-primary"></i> 学校组织研学或校队集训可到基地现场参观。开放时间<strong>周二至周日 10:00–19:00</strong>，对接咨询：易先生 <a href="tel:15928633886">159 2863 3886</a>，也欢迎实地考察。</p>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="school-card">
+                                <span class="school-tag">合作模式 A</span>
+                                <h4 class="h5 mb-2">课后服务 / 社团课</h4>
+                                <p class="text-muted small mb-0">派教练入校授课，按学期规划 12–16 课时体系，含期末汇报表演或班级对抗赛。适合小学科技社团。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="school-card">
+                                <span class="school-tag">合作模式 B</span>
+                                <h4 class="h5 mb-2">校队组建 + 赛事备赛</h4>
+                                <p class="text-muted small mb-0">选拔校队成员，提供系统集训与参赛报名指导，目标区级、市级白名单赛事。适合有竞赛需求的初中 / 高中。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="school-card">
+                                <span class="school-tag">合作模式 C</span>
+                                <h4 class="h5 mb-2">研学 / 社会实践基地</h4>
+                                <p class="text-muted small mb-0">组织学生到天府新区基地开展半日 / 一日研学，体验无人机足球与科技互动，可定制批次与人数。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="school-card">
+                                <span class="school-tag">合作模式 D</span>
+                                <h4 class="h5 mb-2">职业院校技能实训</h4>
+                                <p class="text-muted small mb-0">对接无人机应用技术、电子信息类等专业，提供设备维护、竞赛执裁与实操实训模块，支持 1+X 证书方向。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted small mt-4 mb-0">
+                        了解公司资质 → <a href="https://poqn.cn" target="_blank" rel="noopener">振翔天航官方主站</a> ·
+                        周末遛娃攻略 → <a href="https://oijz.cn" target="_blank" rel="noopener">成都亲子飞行攻略站</a>
+                    </p>
+                </div>
+            </section>
+
+            <section class="resume-section" id="basics">
+                <div class="resume-section-content">
+                    <h2 class="mb-3">无人机足球基本功</h2>
+                    <p class="lead text-muted mb-4">
+                        从「能飞」到「能踢、能配合」，基本功是空中足球一切战术的底座。振翔天航按「安全 → 操控 → 配合 → 对抗」四步带学员系统入门。
+                    </p>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-3 col-sm-6"><img class="drone-img" src="dist/assets/img/train/train-1.jpg" alt="无人机足球训练"></div>
+                        <div class="col-md-3 col-sm-6"><img class="drone-img" src="dist/assets/img/train/train-2.jpg" alt="团队配合练习"></div>
+                        <div class="col-md-3 col-sm-6"><img class="drone-img" src="dist/assets/img/train/train-3.jpg" alt="操控基础训练"></div>
+                        <div class="col-md-3 col-sm-6"><img class="drone-img" src="dist/assets/img/train/train-4.jpg" alt="场内对抗"></div>
+                    </div>
+
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                                <h4 class="h5 mb-2">安全与场地</h4>
+                                <p class="text-muted mb-0 small">佩戴护目镜；仅在围栏防护场内飞行；起飞前检查桨叶、护罩与电量；非上场球体禁止装电池。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-gamepad"></i></div>
+                                <h4 class="h5 mb-2">操控四要素</h4>
+                                <p class="text-muted mb-0 small">悬停定高、前后左右平移、原地转向、加速冲刺——先单练再组合，形成肌肉记忆后再上对抗。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                                <h4 class="h5 mb-2">位置分工</h4>
+                                <p class="text-muted mb-0 small">正式赛事分前锋、向导者、守门员等角色——前锋主攻射门与推进，向导者组织传导，守门员盯防解围；学会喊位、让球、补位，比个人炫技更重要。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="h5 mb-3">入门训练路径</h3>
+                    <div class="skill-step" data-step="1">
+                        <h4 class="h6 mb-2">定点悬停 · 建立空间感</h4>
+                        <p class="text-muted mb-0 small">在球门区外练习 30 秒稳定悬停，感受油门与姿态微调，避免「一推就冲、一松就掉」。</p>
+                    </div>
+                    <div class="skill-step" data-step="2">
+                        <h4 class="h6 mb-2">带球推进 · 贴地飞行</h4>
+                        <p class="text-muted mb-0 small">用无人机「顶」住得分球，沿中线低飞推进；练习变向时先减速再转，防止球体脱控飞出界。</p>
+                    </div>
+                    <div class="skill-step" data-step="3">
+                        <h4 class="h6 mb-2">射门与传球 · 团队配合</h4>
+                        <p class="text-muted mb-0 small">门前加速撞击得分球完成射门；中场练习横传与二过一，培养「看见空位就传」的意识。</p>
+                    </div>
+                    <div class="skill-step" data-step="4">
+                        <h4 class="h6 mb-2">模拟对抗 · 战术演练</h4>
+                        <p class="text-muted mb-0 small">分半场 3 对 3 练习攻防转换；强调得分后前锋须退回己方中线后再进攻（与正式规则一致）。</p>
+                    </div>
+
+                    <h3 class="h5 mb-3 mt-4">撞框失控 · 原因与自救</h3>
+                    <p class="text-muted small mb-4">
+                        训练中常遇到这种情况：高速射门撞门框、撞围网后，球机突然乱转乱飞、不停掉高，摇杆也失去作用。轻微失控本可微调，慌乱误操作反而会让小跑偏变成乱飞炸机——下面帮你搞清原因，并记住赛场上的最佳应急处理。
+                    </p>
+
+                    <h4 class="h6 mb-3">为什么一撞就容易失控？</h4>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-compass"></i></div>
+                                <h4 class="h6 mb-2">传感器数据漂移</h4>
+                                <p class="text-muted small mb-0">猛撞瞬间震动强烈，平衡传感器会短暂乱码、判断不准，误触发机身修正，进而打转跑偏。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-fan"></i></div>
+                                <h4 class="h6 mb-2">动力均衡被打破</h4>
+                                <p class="text-muted small mb-0">机罩轻微形变，围网或门框蹭到桨叶，只需一点点阻力差，4 个电机匀速平衡就会被打破，瞬间失衡乱飘。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-hand-paper"></i></div>
+                                <h4 class="h6 mb-2">慌乱误操作加剧</h4>
+                                <p class="text-muted small mb-0">新手容易本能乱推摇杆，直接打乱飞控自动校准，本可自稳的小跑偏快速变成乱飞炸机。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="emergency-box mb-4">
+                        <div class="emergency-title"><i class="fas fa-exclamation-circle me-1"></i>比赛现场最佳应急处理（优先记住！）</div>
+                        <p class="small mb-3"><strong>1. 高速自旋、疯狂乱飞 → 立刻松开摇杆</strong><br>
+                        这是最安全、最万能的一招：让球机自己找回平衡，杜绝乱打摇杆、硬拉油门。等姿态稍微稳定后，轻推摇杆观察是否跟随指令；若仍无法控制，果断<strong>一键锁桨</strong>，落地重启。</p>
+                        <p class="small mb-0"><strong>2. 小幅跑偏、不自旋 → 稳手慢微调</strong><br>
+                        不慌不乱，轻缓小幅回正摇杆，压低油门降低动力即可，切忌大幅度猛推。</p>
+                    </div>
+
+                    <h4 class="h6 mb-3">赛前 30 秒避坑检查</h4>
+                    <ul class="list-unstyled checklist text-muted small mb-4">
+                        <li><i class="fas fa-check-circle"></i>查看全包保护笼，无开裂、无松动</li>
+                        <li><i class="fas fa-check-circle"></i>检查 4 片桨叶，无缺口、无细微裂纹</li>
+                        <li><i class="fas fa-check-circle"></i>确认电池卡扣完全锁死，不会轻微晃动</li>
+                    </ul>
+
+                    <h3 class="h5 mb-3">2026 备赛：设备与模式</h3>
+                    <p class="text-muted small mb-3">第十届全国青少年无人机大赛筹备中，飞行器核心参数不变（四轴多旋翼、轴距 115–120 mm、起飞重量 160–180 g 等），但需提前完成以下调试：</p>
+                    <ul class="text-muted small mb-4">
+                        <li class="mb-2"><strong>四种飞行模式：</strong>定高、自稳、反乌龟，以及 2026 新增的<strong>锁头模式</strong>——赛前逐项验证切换与操控手感。</li>
+                        <li class="mb-2"><strong>改装合规：</strong>禁止加装光源、超出保护罩的额外结构（识别标识除外）、粘性/增摩擦物质及其他有失公平的装置；违规须 3 分钟内整改，否则判负。</li>
+                        <li class="mb-0"><strong>日常训练：</strong>可模拟「金球制胜」等突发场景，培养快速得分与稳定心态。</li>
+                    </ul>
+
+                    <div class="quote-block mt-4 mb-0">
+                        <strong>教练提示：</strong>无人机足球比单机飞行更考验沟通与耐心。建议每次练习 40–50 分钟，中间休息护眼；家长可陪同观摩，但请勿进入飞行围栏。体系化训练就在振翔天航——天府招商花园城 3 楼，欢迎预约试课。
+                    </div>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+
+            <section class="resume-section" id="rules">
+                <div class="resume-section-content">
+                    <h2 class="mb-3">无人机足球大赛规则</h2>
+                    <p class="lead text-muted mb-4">
+                        2026 年<strong>第十届全国青少年无人机大赛</strong>已进入筹备阶段。无人机足球不再作为独立赛事，而归入<strong>空中对抗赛</strong>四大子任务之一（另三项为多旋翼空战、堡垒争夺、虚实结合察打）。两队遥控飞行器将得分球射入对方球门即得分——核心玩法不变，但相较 2025 第九届有多处关键调整。
+                    </p>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6 col-sm-6"><img class="drone-img" src="dist/assets/img/match/match-1.jpg" alt="比赛现场"></div>
+                        <div class="col-md-6 col-sm-6"><img class="drone-img" src="dist/assets/img/match/match-2.jpg" alt="团队对抗"></div>
+                    </div>
+
+                    <div class="quote-block mb-4">
+                        <strong>报名提醒：</strong>空中对抗赛四大任务须<strong>择一</strong>参与，不可兼项。2025 年「魁地奇」无人机足球赛为独立赛事；2026 年报名归类请按「空中对抗赛 · 无人机足球」填写。
+                    </div>
+
+                    <h3 class="h5 mb-3">2026 核心变化一览</h3>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered rule-table mb-0 compare-row">
+                            <thead>
+                                <tr>
+                                    <th style="width:18%">维度</th>
+                                    <th style="width:41%">2025 第九届</th>
+                                    <th style="width:41%">2026 第十届</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>赛事定位</td>
+                                    <td class="year-old">独立赛事「魁地奇」无人机足球赛，有完整独立规则</td>
+                                    <td class="year-new">归入「空中对抗赛」子任务，晋级/决赛规则与其他子任务统一</td>
+                                </tr>
+                                <tr>
+                                    <td>飞行模式</td>
+                                    <td class="year-old">定高、自稳、反乌龟（3 种）</td>
+                                    <td class="year-new">新增<strong>锁头模式</strong>，共须满足 4 种 <span class="change-badge">新增</span></td>
+                                </tr>
+                                <tr>
+                                    <td>设备改装</td>
+                                    <td class="year-old">无此项明确规定</td>
+                                    <td class="year-new">禁止光源、超罩结构、粘性/增摩擦物等；违规 3 分钟内须整改，否则判负 <span class="change-badge">新增</span></td>
+                                </tr>
+                                <tr>
+                                    <td>晋级排名</td>
+                                    <td class="year-old">净胜分相同 → 仅以总得分判定</td>
+                                    <td class="year-new">净胜分、总得分均相同 → 依次「金球制胜」「体育公平竞赛分」（黄牌计负） <span class="change-badge">细化</span></td>
+                                </tr>
+                                <tr>
+                                    <td>规则结构</td>
+                                    <td class="year-old">单独「名词解释」章节</td>
+                                    <td class="year-new">前锋、向导者、守门员等定义并入「任务说明」，阅读更连贯</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="h5 mb-3">飞行器要求（核心参数不变）</h3>
+                    <ul class="text-muted mb-4">
+                        <li class="mb-2">四轴多旋翼，轴距 115–120 mm，起飞重量 160–180 g；电池、保护罩等核心参数与 2025 年一致。</li>
+                        <li class="mb-2">须具备<strong>定高、自稳、反乌龟、锁头</strong>四种飞行模式，赛前完成调试与切换验证。</li>
+                        <li class="mb-0">禁止加装光源、超出保护罩的额外结构（识别标识除外）、粘性/增摩擦物质及其他有失公平的装置。</li>
+                    </ul>
+
+                    <h3 class="h5 mb-3">成绩评定</h3>
+                    <p class="text-muted small mb-2"><strong>决赛环节</strong>（循环赛）排名规则不变：</p>
+                    <p class="text-muted small mb-3">胜场数 → 净胜总得分 → 总得分</p>
+                    <p class="text-muted small mb-2"><strong>晋级环节</strong>同轮淘汰队伍排名，2026 年新增两层判定：</p>
+                    <ol class="text-muted small mb-4">
+                        <li class="mb-2">净胜分、总得分均相同时，启动<strong>金球制胜</strong>（率先得分方获胜）</li>
+                        <li class="mb-0">仍无法区分时，比较<strong>体育公平竞赛分</strong>（黄牌累计计负 1 分，分数高者优胜）</li>
+                    </ol>
+
+                    <h3 class="h5 mb-3">单场比赛：得分与胜负</h3>
+                    <ul class="text-muted mb-4">
+                        <li class="mb-2"><strong>有效进球：</strong>得分球<strong>整体</strong>进入对方球门，对方得 1 分。</li>
+                        <li class="mb-2"><strong>进攻限制：</strong>每次有效得分后，得分方前锋须撤至己方中线后方可再次进攻。</li>
+                        <li class="mb-2"><strong>纪律处罚：</strong>黄牌累计影响公平竞赛分；场上行为须符合体育道德。</li>
+                        <li class="mb-0">晋级方式（对战、轮空、补位）与决赛循环赛规则，2026 年与空中对抗赛其他子任务保持一致。</li>
+                    </ul>
+
+                    <h3 class="h5 mb-3">备赛三大重点</h3>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-crosshairs"></i></div>
+                                <h4 class="h6 mb-2">升级锁头模式</h4>
+                                <p class="text-muted small mb-0">提前熟悉第四种飞行模式，在对抗中稳定控球、快速转向。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                                <h4 class="h6 mb-2">核查改装合规</h4>
+                                <p class="text-muted small mb-0">逐项检查有无违规加装，避免赛前 3 分钟整改时限内无法完成。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                                <h4 class="h6 mb-2">练金球场景</h4>
+                                <p class="text-muted small mb-0">针对晋级排名与突发平局，强化快速进攻与临门一脚。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-muted small mb-0">全国青少年无人机大赛已多次入选教育部面向中小学生的全国性竞赛活动名单。具体报名、场地与赛程以当届官方通知为准；成人组可参考体育总局航管中心 F9A 无人机足球联赛规则。</p>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+
+            <section class="resume-section" id="more">
+                <div class="resume-section-content">
+                    <h2 class="mb-3">更多无人机足球知识</h2>
+                    <p class="lead text-muted mb-4">
+                        无人机足球（Drone Soccer）起源于韩国，现已纳入多国青少年科技体育项目。国内白名单赛事与体育总局航管中心主导的 <strong>F9A 国际规则体系</strong>在赛制上各有侧重——前者侧重推球入门与团队配合，后者则以攻手穿越球门环得分，是接轨世界锦标赛的标准玩法。
+                    </p>
+
+                    <h3 class="h5 mb-3">国际 F9A 规则体系</h3>
+                    <p class="text-muted small mb-3">F9A 为体育总局航管中心推行的无人机足球竞赛标准，设两大组别，机型与上场人数不同，但核心均为团队对抗、攻手穿环得分。</p>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered rule-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th style="width:22%">组别</th>
+                                    <th style="width:28%">赛制</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>F9A-A</strong></td>
+                                    <td>五人制 · 5V5</td>
+                                    <td class="text-muted small mb-0">每队上场 5 名飞手（含 1 名专职攻手），标准成人/综合组对抗。</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>F9A-B</strong></td>
+                                    <td>三人制 · 3V3</td>
+                                    <td class="text-muted small mb-0">每队上场 3 名飞手（含 1 名专职攻手）；<strong>2025 年起增设女子组</strong>，为青少年与女子选手提供专项舞台。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="h5 mb-3">F9A 比赛方式与得分</h3>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                                <h4 class="h6 mb-2">团队对抗</h4>
+                                <p class="text-muted small mb-0">F9A-A 采用 5V5、F9A-B 采用 3V3 上场对抗；每队配置 1 名<strong>专职攻手</strong>，其余队员负责组织、防守与配合。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+                                <h4 class="h6 mb-2">穿环得分</h4>
+                                <p class="text-muted small mb-0">攻手操控<strong>无人机球</strong>穿过对方悬挂的<strong>球门环</strong>即得分；与白名单青少年赛「推得分球入门」的玩法不同，更强调飞行精度与战术突击。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-stopwatch"></i></div>
+                                <h4 class="h6 mb-2">三局两胜</h4>
+                                <p class="text-muted small mb-0">单场采用<strong>三局两胜制</strong>，每局时长 <strong>3 分钟</strong>；局间换边，先赢两局者获胜。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="h5 mb-3">2025 世界无人机足球锦标赛（上海）</h3>
+                    <p class="text-muted small mb-3">
+                        <strong>2025 年 11 月 15 日至 18 日</strong>，2025 年世界无人机足球锦标赛在<strong>上海体育馆</strong>举行。赛事由<strong>体育总局航管中心、中国航空运动协会、上海市体育局</strong>联合承办，来自全球 <strong>18 个国家和地区</strong>的 <strong>46 支队伍</strong>参赛；中国队在 F9A-A、F9A-B 每个组别各派 <strong>2 支队伍</strong>出征。
+                    </p>
+                    <ul class="text-muted small mb-4">
+                        <li class="mb-2"><strong>测试赛暨媒体体验日：</strong>2025 年 10 月 8 日在上海市科技体育运动管理中心气膜馆先行举办，供队伍适应场地、媒体提前体验。</li>
+                        <li class="mb-2"><strong>配套活动：</strong>赛场设体验区、科技展示区及科普表演；同期举办<strong>第二届上海科技体育博览会</strong>，持赛事门票可免费参观展览。</li>
+                        <li class="mb-2"><strong>票务：</strong>单日票 80 元、3 日套票 180 元；亲友同行享 5 折，三日通票观众可无限次进出场馆；前 50 名到场观众赠送纪念徽章；纳入上海市体育消费券项目。</li>
+                        <li class="mb-0"><strong>观赛科技：</strong>引入 AR 技术直播与虚拟体育互动区，提升现场沉浸感。</li>
+                    </ul>
+
+                    <div class="quote-block mb-4">
+                        <strong>规则对照提示：</strong>振翔天航日常青训与白名单备赛，主要按全国青少年无人机大赛「空中对抗赛 · 无人机足球」规程训练（推得分球、角色分工、锁头模式等）。了解 F9A 国际规则与世界赛动态，有助于学员和家长看清「国内青少年赛」与「国际 F9A 世锦赛」的路径差异，科学规划长期发展。
+                    </div>
+
+                    <div class="row g-4 mb-4">
+                        <div class="col-lg-6">
+                            <h3 class="h5 mb-3">什么是无人机足球？</h3>
+                            <p class="text-muted">
+                                运动员通过遥控器驾驶带全包围护罩的球形（或类球形）四轴飞行器，在封闭赛场内完成对抗。白名单青少年赛强调推动「得分球」射入对方球门；F9A 国际赛则由<strong>攻手操控无人机球穿越球门环</strong>得分。两项玩法均突出<strong>控球、配合、战术与心理素质</strong>，非常适合作为孩子的第一门无人机团队项目。
+                            </p>
+                            <p class="text-muted mb-0">
+                                振翔天航在俱乐部内设安全防护笼与标准比例球门，日常即可开展 3 对 3 模拟赛，并按 2026 年白名单新规重点训练锁头模式、设备合规与金球制胜场景，为市级、省级及第十届全国赛做好备赛。
+                            </p>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="h5 mb-3">孩子能收获什么？</h3>
+                            <ul class="text-muted mb-0">
+                                <li class="mb-2">手眼协调、空间感知与临场应变能力</li>
+                                <li class="mb-2">沟通、分工、信任——真正的「空中 teamwork」</li>
+                                <li class="mb-2">规则意识、抗压能力与体育道德</li>
+                                <li class="mb-2">接触白名单赛事，拓展科技特长发展路径</li>
+                                <li class="mb-0">在「玩」中理解空气动力、电池管理与无线电基础</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="h5 mb-3">常见器材概念</h3>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="equipment-card">
+                                <div class="equipment-photo">
+                                    <img src="dist/assets/img/equipment/goal-ring.jpg" alt="球门环：悬挂于赛场上方的得分目标" />
+                                </div>
+                                <div class="equipment-card-body">
+                                    <h4 class="h6 mb-2"><i class="fas fa-circle-notch text-primary me-2"></i>球门环</h4>
+                                    <p class="text-muted small mb-0">悬挂于赛场上方的环形目标，F9A 国际赛中由<strong>攻手</strong>操控无人机球精准穿越即得分。环体多为轻质泡沫或塑料材质，通过吊线固定于防护笼顶部，高度与口径按 F9A 规程统一设置。</p>
+                                    <p class="equipment-credit">实拍裁剪 · 振翔天航成都基地无人机足球赛场</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="equipment-card">
+                                <div class="equipment-photo">
+                                    <img src="dist/assets/img/equipment/drone-ball.jpg" alt="无人机球：带球形护罩的四轴飞行器" />
+                                </div>
+                                <div class="equipment-card-body">
+                                    <h4 class="h6 mb-2"><i class="fas fa-futbol text-primary me-2"></i>无人机球</h4>
+                                    <p class="text-muted small mb-0">外层为球形或笼形护罩的多旋翼飞行器，保护桨叶与人员安全，是选手用遥控器直接操控的「球员」。F9A-B 多为 20 cm 级机型（如 Saker DS200），攻手须操控其精准穿越对方球门环。</p>
+                                    <p class="equipment-credit">器材参考图 · 阿天同学 AT 系列球形护罩训练机</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="h5 mb-3">延伸阅读与官方信息</h3>
+                    <a class="knowledge-link" href="https://www.int-ede.com/" target="_blank" rel="noopener">
+                        <i class="fas fa-external-link-alt"></i>全国青少年无人机大赛官网 — 2026 空中对抗赛（含无人机足球）规程与报名
+                    </a>
+                    <a class="knowledge-link" href="https://www.sport.gov.cn/hgzx/" target="_blank" rel="noopener">
+                        <i class="fas fa-external-link-alt"></i>体育总局航管中心 — F9A 无人机足球联赛与世界锦标赛规则通知
+                    </a>
+                    <a class="knowledge-link" href="https://mp.weixin.qq.com/s/5yt2ekPTYT3xMt97hCnvFA" target="_blank" rel="noopener">
+                        <i class="fas fa-newspaper"></i>振翔天航微信公众号 · 视频号 — 无人机足球基本功教学、课程体验与赛事集训
+                    </a>
+
+                    <div class="quote-block mt-4 mb-0">
+                        想带孩子体验无人机足球？天府招商花园城 L3-027，电话 <a href="tel:15928633886">159 2863 3886</a>（易先生）/ <a href="tel:15800802787">158 0080 2787</a>（王先生）。开放时间周二至周日 10:00–19:00，可电话/微信咨询，也欢迎实地考察。
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div style="text-align:center; padding:15px 0; font-size:14px; color:#666;">
+            <a href="https://beian.miit.gov.cn" target="_blank" style="text-decoration:none; color:#666;">蜀ICP备2026022939号-2</a>
+        </div>
+
+        <script>
+            function copyWechat(id) {
+                const wechatId = id || '15928633886';
+                navigator.clipboard.writeText(wechatId).then(() => {
+                    showTip('微信号已复制：' + wechatId);
+                });
+            }
+            function showTip(msg) {
+                const tip = document.createElement('div');
+                tip.innerText = msg;
+                tip.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.7);color:#fff;padding:12px 24px;border-radius:8px;z-index:9999;font-size:16px;';
+                document.body.appendChild(tip);
+                setTimeout(() => tip.remove(), 2000);
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
