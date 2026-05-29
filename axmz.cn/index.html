@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="天航FPV竞速飞行中心 — 成都专业青少年穿越机竞速与越障训练。模拟器挑战、穿越机初体验；白名单赛事特训营、CAAC/AOPA执照考证班。蜀ICP备2026022939号-3。" />
+    <meta name="author" content="振翔天航" />
+    <title>天航 FPV 竞速飞行中心 · 振翔天航</title>
+    <link rel="icon" type="image/x-icon" href="dist/assets/img/profile.jpg" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --race-bg: #0a0e14;
+            --race-surface: #141b24;
+            --race-border: #243040;
+            --race-cyan: #00e5ff;
+            --race-magenta: #ff2d6a;
+            --race-text: #c8d4e0;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "Noto Sans SC", sans-serif;
+            background: var(--race-bg);
+            color: var(--race-text);
+        }
+        .race-font { font-family: "Orbitron", "Noto Sans SC", sans-serif; }
+
+        .top-nav {
+            background: rgba(10, 14, 20, 0.95);
+            border-bottom: 1px solid var(--race-border);
+        }
+        .top-nav .navbar-brand {
+            font-family: "Orbitron", sans-serif;
+            color: var(--race-cyan) !important;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+        .top-nav .nav-link {
+            color: rgba(200, 212, 224, 0.8) !important;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .top-nav .nav-link:hover { color: var(--race-cyan) !important; }
+        .top-nav .navbar-toggler { border-color: var(--race-border); }
+        .top-nav .navbar-toggler-icon { filter: invert(1); }
+
+        .hero {
+            padding: 6rem 0 5rem;
+            background:
+                linear-gradient(135deg, rgba(0, 229, 255, 0.06) 0%, transparent 50%),
+                linear-gradient(225deg, rgba(255, 45, 106, 0.08) 0%, transparent 50%),
+                var(--race-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--race-cyan), var(--race-magenta), transparent);
+        }
+        .hero h1 {
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
+        }
+        .hero .tag {
+            display: inline-block;
+            border: 1px solid var(--race-magenta);
+            color: var(--race-magenta);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+        .hero-stat {
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid var(--race-border);
+            border-radius: 6px;
+            background: var(--race-surface);
+        }
+        .hero-stat .num {
+            font-family: "Orbitron", sans-serif;
+            font-size: 1.5rem;
+            color: var(--race-cyan);
+            font-weight: 700;
+        }
+        .hero-stat .lbl { font-size: 0.78rem; opacity: 0.7; margin-top: 0.25rem; }
+
+        .section { padding: 4rem 0; }
+        .section-alt { background: var(--race-surface); }
+        .section-label {
+            font-family: "Orbitron", sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--race-cyan);
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: clamp(1.4rem, 3vw, 1.85rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .neon-line {
+            width: 40px; height: 2px;
+            background: linear-gradient(90deg, var(--race-cyan), var(--race-magenta));
+            margin-bottom: 1.5rem;
+        }
+        .section-desc {
+            opacity: 0.75;
+            max-width: 42rem;
+            margin-bottom: 2rem;
+            line-height: 1.75;
+        }
+
+        .track-card {
+            background: var(--race-surface);
+            border: 1px solid var(--race-border);
+            border-radius: 8px;
+            height: 100%;
+            overflow: hidden;
+            padding: 1.75rem;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .track-card:has(.track-visual) { padding: 0; }
+        .track-card:hover {
+            border-color: var(--race-cyan);
+            box-shadow: 0 0 24px rgba(0, 229, 255, 0.12);
+        }
+        .track-visual {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: var(--race-bg);
+            border-bottom: 1px solid var(--race-border);
+        }
+        .track-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .track-visual-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.88));
+            font-size: 0.8rem;
+            color: #fff;
+        }
+        .track-card-body { padding: 1.5rem 1.75rem 1.75rem; }
+        .track-icon {
+            width: 48px; height: 48px;
+            border-radius: 6px;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--race-cyan);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .track-card h4 { color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+
+        .tier-card {
+            border: 1px solid var(--race-border);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 100%;
+            background: var(--race-surface);
+        }
+        .tier-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--race-border);
+        }
+        .tier-header.tier-hot {
+            background: linear-gradient(135deg, rgba(255, 45, 106, 0.15), rgba(0, 229, 255, 0.08));
+            border-bottom-color: var(--race-magenta);
+        }
+        .tier-body { padding: 1.5rem; }
+        .tier-price {
+            font-family: "Orbitron", sans-serif;
+            font-size: 0.85rem;
+            color: var(--race-cyan);
+        }
+
+        .pilot-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--race-border);
+        }
+        .pilot-row:last-child { border-bottom: none; }
+        .pilot-rank {
+            font-family: "Orbitron", sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            width: 32px;
+            color: var(--race-cyan);
+        }
+        .pilot-rank.gold { color: #ffd700; }
+        .pilot-rank.silver { color: #c0c0c0; }
+        .pilot-rank.bronze { color: #cd7f32; }
+        .pilot-score {
+            margin-left: auto;
+            font-family: "Orbitron", sans-serif;
+            color: var(--race-magenta);
+            font-size: 0.9rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.12), rgba(255, 45, 106, 0.12));
+            border: 1px solid var(--race-cyan);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--race-cyan);
+            color: var(--race-bg);
+            font-weight: 700;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .cta-btn:hover { background: #fff; color: var(--race-bg); }
+
+        .site-footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(200, 212, 224, 0.5);
+            border-top: 1px solid var(--race-border);
+        }
+        .site-footer a { color: rgba(200, 212, 224, 0.7); text-decoration: none; }
+        .convert-banner {
+            text-align: center;
+            padding: 1.25rem;
+            border-top: 1px solid var(--race-border);
+            border-bottom: 1px solid var(--race-border);
+            color: rgba(200, 212, 224, 0.6);
+            font-size: 0.82rem;
+            letter-spacing: 0.15em;
+        }
+        .weekend-act {
+            background: var(--race-surface);
+            border: 1px solid var(--race-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 100%;
+        }
+        .weekend-act:hover { border-color: var(--race-magenta); }
+        .weekend-act .act-tag {
+            font-size: 0.7rem;
+            color: var(--race-magenta);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body id="page-top">
+
+<nav class="navbar navbar-expand-lg top-nav sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top">FPV RACING</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#weekend">沉浸体验</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tracks">双赛道</a></li>
+                <li class="nav-item"><a class="nav-link" href="#training">考证竞赛</a></li>
+                <li class="nav-item"><a class="nav-link" href="#career">发展规划</a></li>
+                <li class="nav-item"><a class="nav-link" href="#community">飞手社区</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">预约飞行</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <span class="tag">趣味体验 · 专业竞速</span>
+        <h1 class="mb-3">天航 FPV 竞速飞行中心</h1>
+        <p class="lead mb-4" style="max-width: 36rem; opacity: 0.85;">
+            成都专业的青少年穿越机（FPV）竞速与越障训练中心。第一视角沉浸式飞行、白名单赛事备赛与 CAAC/AOPA 考证培训，覆盖零基础入门到竞赛进阶。
+        </p>
+        <div class="row g-3 mb-4" style="max-width: 520px;">
+            <div class="col-4"><div class="hero-stat"><div class="num">FPV</div><div class="lbl">沉浸视角</div></div></div>
+            <div class="col-4"><div class="hero-stat"><div class="num">3RD</div><div class="lbl">越障竞速</div></div></div>
+            <div class="col-4"><div class="hero-stat"><div class="num">CAAC</div><div class="lbl">考证通道</div></div></div>
+        </div>
+        <a class="cta-btn" href="tel:15800802787"><i class="fas fa-bolt me-2"></i>预约体验飞行</a>
+        <p class="small mt-3 mb-0" style="opacity:0.65;"><i class="fas fa-clock me-1"></i>开放时间：周二至周日 10:00–19:00（周一休息）· 天府招商花园城 L3-027 · 可电话/微信咨询，也欢迎实地考察</p>
+    </div>
+</header>
+
+<section class="section section-alt" id="weekend">
+    <div class="container">
+        <p class="section-label">IMMERSIVE FUN</p>
+        <div class="neon-line"></div>
+        <h2 class="section-title">沉浸式飞行体验</h2>
+        <p class="mb-4" style="opacity: 0.75; max-width: 36rem;">FPV 第一视角沉浸感强、上手门槛适中。周末可参加模拟器挑战赛或穿越机初体验，在安全围栏内完成入门训练。</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="weekend-act">
+                    <p class="act-tag">低门槛 · 室内安全</p>
+                    <h4 style="color:#fff; font-size:1rem; margin-bottom:0.5rem;">模拟器挑战赛</h4>
+                    <p class="small mb-2" style="opacity:0.75;">店内竞速模拟器月度排行榜，零炸机成本体验穿门快感。适合 10 岁以上零基础学员，周末随到随玩。</p>
+                    <a href="tel:15800802787" class="cta-btn" style="font-size:0.8rem; padding:0.45rem 1rem;">预约挑战</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="weekend-act">
+                    <p class="act-tag">热门 · 第一视角</p>
+                    <h4 style="color:#fff; font-size:1rem; margin-bottom:0.5rem;">穿越机初体验</h4>
+                    <p class="small mb-2" style="opacity:0.75;">佩戴 FPV 眼镜以飞行员视角操控无人机，2–3 课时入门课含安全规范与基础操控。可拍摄酷炫飞行视频发朋友圈。</p>
+                    <a href="tel:15800802787" class="cta-btn" style="font-size:0.8rem; padding:0.45rem 1rem;">预约体验</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="weekend-act">
+                    <p class="act-tag">打卡 · 越障赛道</p>
+                    <h4 style="color:#fff; font-size:1rem; margin-bottom:0.5rem;">第三视角越障体验</h4>
+                    <p class="small mb-2" style="opacity:0.75;">在目视第三视角下穿越障碍门、完成定点起降，感受速度与精准的平衡。比 FPV 更易上手，是竞速入门最佳起点。</p>
+                    <a href="tel:15928633886" class="cta-btn" style="font-size:0.8rem; padding:0.45rem 1rem;">预约体验</a>
+                </div>
+            </div>
+        </div>
+        <p class="small mt-3 mb-0" style="opacity:0.55;"><i class="fas fa-clock me-1"></i>体验时段：周二至周日 10:00–19:00 · 可电话/微信咨询，也欢迎实地考察</p>
+    </div>
+</section>
+
+<div class="convert-banner">被速度吸引之后 · 走专业路线</div>
+
+<section class="section" id="tracks">
+    <div class="container">
+        <p class="section-label">DUAL TRACKS</p>
+        <div class="neon-line"></div>
+        <h2 class="section-title">两大竞速赛道，一套硬核体系</h2>
+        <p class="section-desc">振翔天航将越障竞速与 FPV 穿越合并运营，学员可根据兴趣选择方向，也可双线进阶成为全能飞手。</p>
+
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-6 d-flex">
+                <div class="track-card flex-fill">
+                    <div class="track-visual">
+                        <img src="dist/assets/img/venue/obstacle-course.png" alt="第三视角越障竞速赛道" />
+                        <div class="track-visual-label"><i class="fas fa-route me-1"></i>第三视角越障竞速</div>
+                    </div>
+                    <div class="track-card-body">
+                        <div class="track-icon"><i class="fas fa-route"></i></div>
+                        <h4>第三视角越障竞速</h4>
+                        <p class="small mb-0" style="opacity: 0.75;">通过遥控器屏幕或目视第三视角操控穿越机，高速穿越障碍门、完成定点起降与赛道计时。锻炼空间感知、反应速度与专注力，是入门竞速的最佳起点。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex">
+                <div class="track-card flex-fill">
+                    <div class="track-visual">
+                        <img src="dist/assets/img/venue/fpv-experience.png" alt="FPV第一视角飞行" />
+                        <div class="track-visual-label"><i class="fas fa-vr-cardboard me-1"></i>FPV 第一视角飞行</div>
+                    </div>
+                    <div class="track-card-body">
+                        <div class="track-icon"><i class="fas fa-vr-cardboard"></i></div>
+                        <h4>FPV 第一视角飞行</h4>
+                        <p class="small mb-0" style="opacity: 0.75;">佩戴 FPV 眼镜以飞行员视角操控无人机，获得身临其境的飞行体验。全球增长最快的科技运动之一，也是衔接无人机职业方向的核心技能。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="training">
+    <div class="container">
+        <p class="section-label">PRO TRAINING</p>
+        <div class="neon-line"></div>
+        <h2 class="section-title">专业竞技与考证</h2>
+        <p class="section-desc">针对被速度吸引的玩家，推出白名单赛事特训营和 CAAC/AOPA 执照考证班。详细介绍越障竞速技巧、高阶飞行训练，以及成为职业飞手或科技特长生的发展规划。</p>
+
+        <div class="row g-4 align-items-stretch">
+            <div class="col-md-4 d-flex">
+                <div class="tier-card flex-fill">
+                    <div class="tier-header">
+                        <h4 class="mb-1" style="color:#fff;">新手体验课</h4>
+                        <p class="tier-price mb-0">ENTRY · 2–3 课时</p>
+                    </div>
+                    <div class="tier-body">
+                        <ul class="small ps-3 mb-0" style="opacity:0.8;">
+                            <li class="mb-2">模拟器入门，减少炸机成本</li>
+                            <li class="mb-2">第三视角基础操控与定点悬停</li>
+                            <li class="mb-2">安全规范与设备认知</li>
+                            <li>适合 10 岁以上零基础学员</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex">
+                <div class="tier-card flex-fill">
+                    <div class="tier-header tier-hot">
+                        <h4 class="mb-1" style="color:#fff;">职业飞手考证班</h4>
+                        <p class="tier-price mb-0">CAAC / AOPA · 系统集训</p>
+                    </div>
+                    <div class="tier-body">
+                        <ul class="small ps-3 mb-0" style="opacity:0.8;">
+                            <li class="mb-2">民航局无人机驾驶员培训体系</li>
+                            <li class="mb-2">AOPA 理论 + 实操 + 考前冲刺</li>
+                            <li class="mb-2">越障赛道标准科目训练</li>
+                            <li>面向有职业规划的年轻人</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex">
+                <div class="tier-card flex-fill">
+                    <div class="tier-header">
+                        <h4 class="mb-1" style="color:#fff;">白名单赛事特训营</h4>
+                        <p class="tier-price mb-0">ELITE · 竞赛导向</p>
+                    </div>
+                    <div class="tier-body">
+                        <ul class="small ps-3 mb-0" style="opacity:0.8;">
+                            <li class="mb-2">全国青少年无人机大赛越障竞速备赛</li>
+                            <li class="mb-2">赛级设备调试与故障快修</li>
+                            <li class="mb-2">模拟赛对抗与心理素质训练</li>
+                            <li>备战白名单竞速类赛项</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-box mt-4">
+            <p class="mb-2"><strong style="color:#fff;">训练路径建议：</strong>模拟器 50+ 小时 → 第三视角实飞 → FPV 入门 → 赛道竞速 → 考证 / 参赛</p>
+            <p class="small mb-0" style="opacity:0.75;">基地配备标准障碍门赛道、FPV 安全防护笼与专业教练一对一指导。详细课程安排请咨询竞赛教练王先生。</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="career">
+    <div class="container">
+        <p class="section-label">CAREER PATH</p>
+        <div class="neon-line"></div>
+        <h2 class="section-title">职业飞手与科技特长生发展规划</h2>
+        <p class="mb-4" style="opacity: 0.75; max-width: 36rem;">被速度吸引之后，如何走专业路线？振翔天航为学员提供从兴趣体验到职业认证、从区级市赛到科技特长生申报的清晰路径。</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="track-card">
+                    <div class="track-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>科技特长生方向</h4>
+                    <p class="small mb-0" style="opacity:0.75;">白名单赛事成绩是核心支撑。建议路径：周末体验 → 系统培训 → 区级市赛 → 省赛国赛 → 结合目标学校政策申请。竞赛教练一对一规划。</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="track-card">
+                    <div class="track-icon"><i class="fas fa-id-card"></i></div>
+                    <h4>职业飞手考证</h4>
+                    <p class="small mb-0" style="opacity:0.75;">CAAC 民航局驾驶员执照 + AOPA 体系培训，面向有志从事航拍、巡检、竞速等职业方向的年轻人。理论 + 实操 + 考前冲刺一站式集训。</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="track-card">
+                    <div class="track-icon"><i class="fas fa-wrench"></i></div>
+                    <h4>硬件 + 飞行双修</h4>
+                    <p class="small mb-0" style="opacity:0.75;">竞速飞手需懂机架调试与故障快修。可衔接 <a href="https://upzn.cn" target="_blank" rel="noopener" style="color:var(--race-cyan);">天航 3D 创客工坊</a> 的硬件维护培训与机架定制服务。</p>
+                </div>
+            </div>
+        </div>
+        <p class="small mt-4 mb-0" style="opacity:0.6;">升学政策与赛事规则解读 → <a href="https://oijz.cn#competition" target="_blank" rel="noopener" style="color:var(--race-cyan);">成都亲子飞行攻略站</a> · 公司资质 → <a href="https://poqn.cn#honors" target="_blank" rel="noopener" style="color:var(--race-cyan);">官方主站</a></p>
+    </div>
+</section>
+
+<section class="section section-alt" id="community">
+    <div class="container">
+        <p class="section-label">PILOT COMMUNITY</p>
+        <div class="neon-line"></div>
+        <h2 class="section-title">飞手社区 · 模拟器排行榜</h2>
+        <p class="mb-4" style="opacity: 0.75;">优秀学员风采与店内模拟器月度成绩公示，成绩由基地训练系统记录。</p>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="track-card">
+                    <h4 class="mb-3"><i class="fas fa-trophy me-2" style="color:var(--race-magenta);"></i>2026 年 3 月模拟器竞速榜</h4>
+                    <div class="pilot-row">
+                        <span class="pilot-rank gold">01</span>
+                        <span>学员 L · 赛道 A</span>
+                        <span class="pilot-score">32.4s</span>
+                    </div>
+                    <div class="pilot-row">
+                        <span class="pilot-rank silver">02</span>
+                        <span>学员 Z · 赛道 A</span>
+                        <span class="pilot-score">34.1s</span>
+                    </div>
+                    <div class="pilot-row">
+                        <span class="pilot-rank bronze">03</span>
+                        <span>学员 W · 赛道 B</span>
+                        <span class="pilot-score">35.8s</span>
+                    </div>
+                    <div class="pilot-row">
+                        <span class="pilot-rank">04</span>
+                        <span>学员 C · 赛道 A</span>
+                        <span class="pilot-score">36.2s</span>
+                    </div>
+                    <div class="pilot-row">
+                        <span class="pilot-rank">05</span>
+                        <span>学员 H · 赛道 B</span>
+                        <span class="pilot-score">37.0s</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="track-card h-100">
+                    <h4 class="mb-3"><i class="fas fa-star me-2" style="color:var(--race-cyan);"></i>优秀飞手风采</h4>
+                    <p class="small mb-3" style="opacity:0.8;">从「炸机百次」到赛道夺金，每一位飞手的成长都值得被看见。社区定期举办飞行交流日、改装分享会与夜场竞速赛。</p>
+                    <ul class="small ps-3 mb-3" style="opacity:0.8;">
+                        <li class="mb-2"><strong style="color:#fff;">学员 L</strong> — 2026 省级越障竞速三等奖，FPV 单圈最佳 28 秒</li>
+                        <li class="mb-2"><strong style="color:#fff;">学员 Z</strong> — 从零基础到独立完成赛道规划，现担任助教</li>
+                        <li class="mb-0"><strong style="color:#fff;">学员 W</strong> — 通过民航局驾驶员理论考试，备考实操中</li>
+                    </ul>
+                    <p class="small mb-0" style="opacity:0.6;">升学规划与赛事政策解读 → <a href="https://oijz.cn" target="_blank" rel="noopener" style="color:var(--race-cyan);">成都亲子飞行攻略站</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="contact">
+    <div class="container">
+        <p class="section-label">BOOK A FLIGHT</p>
+        <div class="neon-line"></div>
+        <h2 class="section-title">预约飞行体验</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="track-card">
+                    <p class="mb-2"><i class="fas fa-user me-2" style="color:var(--race-cyan);"></i><strong style="color:#fff;">王先生</strong> · 竞赛教练</p>
+                    <p class="mb-3"><a href="tel:15800802787" style="color:var(--race-cyan);">158 0080 2787</a>
+                    <a href="javascript:" class="ms-2 small" onclick="copyText('15800802787')" style="opacity:0.6;">[复制微信]</a></p>
+                    <p class="mb-2"><i class="fas fa-user me-2" style="color:var(--race-cyan);"></i><strong style="color:#fff;">易先生</strong> · 课程咨询</p>
+                    <p class="mb-3"><a href="tel:15928633886" style="color:var(--race-cyan);">159 2863 3886</a>
+                    <a href="javascript:" class="ms-2 small" onclick="copyText('15928633886')" style="opacity:0.6;">[复制微信]</a></p>
+                    <p class="small mb-0" style="opacity:0.7;"><i class="fas fa-map-marker-alt me-1"></i>成都天府新区天府招商花园城 L3-027 · 地铁 6 号线秦皇寺站</p>
+                    <p class="small mt-2 mb-0" style="opacity:0.7;"><i class="fas fa-clock me-1"></i>开放时间：周二至周日 10:00–19:00（周一休息）· 可电话/微信咨询，也欢迎实地考察</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="track-card">
+                    <p class="small mb-2" style="opacity:0.8;">对硬件动手感兴趣？学完飞行后，可以去我们的 <a href="https://upzn.cn" target="_blank" rel="noopener" style="color:var(--race-cyan);">天航 3D 创客工坊</a> 定制专属机架与保护罩。</p>
+                    <p class="small mb-0" style="opacity:0.8;">想了解公司资质？访问 <a href="https://poqn.cn" target="_blank" rel="noopener" style="color:var(--race-cyan);">振翔天航官方品牌主站</a>。周末攻略 → <a href="https://oijz.cn" target="_blank" rel="noopener" style="color:var(--race-cyan);">oijz.cn</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <p class="mb-0"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">蜀ICP备2026022939号-3</a></p>
+</footer>
+
+<script>
+function copyText(t) {
+    navigator.clipboard.writeText(t).then(function() {
+        var el = document.createElement('div');
+        el.innerText = '已复制：' + t;
+        el.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#00e5ff;padding:12px 24px;border-radius:6px;z-index:9999;';
+        document.body.appendChild(el);
+        setTimeout(function(){ el.remove(); }, 2000);
+    });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
